@@ -5,7 +5,7 @@ const CassetteLoader = () => {
   return (
     <div className="cassette-loader">
     <img
-      src="/cassette2.jpg" 
+      src="/images3 copy.jpeg" 
       alt="Cassette Loader"
       className="cassette-image"
     />

@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+📚 Project Overview
+The frontend is built with:
+⚛️ ReactJS: Dynamic user interface and state management.
+🎨 CSS: Custom styles with animations and mood-based themes.
+📦 Axios: Handles HTTP requests to the backend API.
+🧠 AI Integration: Connects to the AI-powered backend for lyric generation.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 Getting Started
+📥 1. Clone the Repository
+git clone https://github.com/PursuitMadeMe/ai-lyric-frontend.git
+cd ai-lyric-frontend
 
-## Available Scripts
+📦 2. Install Dependencies
+Run the following command to install required packages:
+npm install
 
-In the project directory, you can run:
+⚡️ 3. Run the Frontend
+Start the frontend on localhost:3000:
+npm run start
 
-### `npm start`
+🎨 Frontend Features
+📝 1. Mood Selection
+Users can select a mood:
+Dreamy
+Romantic
+Melancholy
+Joyful
+Empowered
+The mood changes the background and styling dynamically.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🎵 2. Lyric Generation
+Clicking the "Generate Lyrics" button sends a request to the backend API.
+Lyrics are generated and displayed with a mood-based background.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🕹️ 3. Copy & Reset Buttons
+✅ Copy Lyrics: Copies generated lyrics to the clipboard.
+🔄 Reset: Resets the mood and generated lyrics.
 
-### `npm test`
+🎼 4. Falling Music Notes Animation
+🎶 Animated music notes falling in the background.
+Adjustable speed, size, and opacity.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+📂 Project Structure
+/ai-lyric-frontend
+├── /public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── vibe2.webp
+├── /src
+│   ├── /components
+│   │   ├── CassetteLoader.jsx    # Cassette loader animation
+│   │   └── MoodSelector.jsx      # Mood selection component
+│   ├── /css
+│   │   └── App.css               # Main CSS styles
+│   ├── App.js                    # Main App component
+│   ├── index.js                  # Entry point
+│   └── package.json
+└── README.md
 
-### `npm run build`
+🔥 API Integration
+🎵 POST /api/lyrics
+URL: http://localhost:3333/api/lyrics
+Method: POST
+Request Body:
+{
+  "mood": "dreamy" | "romantic" | "melancholy" | "joyful" | "empowered"
+}
+Success Response:
+{
+  "lyrics": "Generated lyrics based on the selected mood."
+}
+Error Response:
+{
+  "error": "Failed to generate lyrics. Please try again later."
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🛠️ Configuration
+🎯 1. Backend API Endpoint
+Update the backend API URL if deployed:
+const API_URL = "http://localhost:3333/api/lyrics";
+If you plan to deploy:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Update the API_URL to the production backend URL.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+📄 Deployment Instructions
+🌐 1. Build the Frontend
+npm run build
 
-### `npm run eject`
+🚀 2. Deploy to Netlify, Vercel, or GitHub Pages
+For Netlify:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Drag and drop the build/ folder into Netlify.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Configure environment variables if needed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🎨 Customization
+🎵 1. Change Background Image
+Replace vibe2.webp in /public with your desired background image.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+🎼 2. Adjust Music Note Speed or Size
+Modify the App.css styles for:
+Size: font-size in .music-note.
+Speed: animation-duration in @keyframes fall.
 
-## Learn More
+🎯 Known Issues & Fixes
+If the lyrics don’t generate:
+Check if the backend is running on port 3333.
+Verify the API endpoint matches the backend URL.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🎉 Future Enhancements
+🎤 Add more moods and lyric styles.
+🎧 Integrate advanced AI models.
+📝 Enable user input for personalized lyrics.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+📣 Contributors
+👩‍💻 Kenyetta Griffin - GitHub
 
-### Code Splitting
+📄 License
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🎉 Done!
+Your frontend is ready to run and generate amazing lyrics! 🎧✨
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import MoodSelector from "./components/MoodSelector";
 import CassetteLoader from "./components/CassetteLoader";
 import axios from "axios";
+import "./App.css";
 
 function App() {
   const [mood, setMood] = useState("");
   const [lyrics, setLyrics] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -14,6 +15,7 @@ function App() {
       const res = await axios.post("http://localhost:3333/api/lyrics", {
         mood,
       });
+      console.log("Lyrics Response:", res.data.lyrics);
       setLyrics(res.data.lyrics);
     } catch (err) {
       console.error("❌ Error fetching lyrics:", err);
@@ -22,29 +24,71 @@ function App() {
     }
   };
 
-  return (
-    <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4 text-center">
-        🎧 Nova's AI Lyric Generator
-      </h1>
+  // Mood-based class applied only to lyrics container
+  const moodClass = mood
+    ? `${mood}-bg` // Apply mood class to lyrics
+    : "default-bg"; // Fallback if no mood selected
 
+  const handleReset = () => {
+    window.location.reload();
+  };
+
+  // Copy lyrics to clipboard
+  const handleCopyLyrics = () => {
+    if (lyrics) {
+      navigator.clipboard.writeText(lyrics);
+      alert("✅ Lyrics copied to clipboard!");
+    }
+  };
+
+  return (
+    <div className="app-container">
+      <h1 className="app-title">🎧 Nova's AI Lyric Generator</h1>
+
+      {/* Mood Selector */}
       <MoodSelector selectedMood={mood} onMoodChange={setMood} />
 
-      <button
-        className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded disabled:opacity-50"
-        onClick={handleSubmit}
-        disabled={!mood}
-      >
-        Generate Lyrics
-      </button>
+      {/* Button Container for spacing */}
+      <div className="button-container">
+        <button
+          className="generate-button"
+          onClick={handleSubmit}
+          disabled={!mood}
+        >
+          🎵 Generate Lyrics
+        </button>
+      </div>
 
+      {/* Loader while generating */}
       {loading && <CassetteLoader />}
+
+      {/* Generated Lyrics */}
       {!loading && lyrics && (
-        <div className="mt-6 bg-gray-100 p-4 rounded shadow">
-          <h3 className="font-bold mb-2">🎤 Your Lyrics:</h3>
-          <pre className="whitespace-pre-wrap">{lyrics}</pre>
+        <div className={`lyrics-container ${moodClass}`}>
+          <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
+          <pre className="lyrics-content">{lyrics}</pre>
         </div>
       )}
+
+      {/* Reset Button */}
+      {!loading && lyrics && (
+        <div className="button-container">
+          <button onClick={handleReset} className="reset-button">
+            🔄 Reset
+          </button>
+          <button onClick={handleCopyLyrics} className="copy-button">
+            📋 Copy Lyrics
+          </button>
+        </div>
+      )}
+      {/* Falling music notes */}
+      <div className="falling-notes">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <span key={i} className="music-note">
+            {i % 3 === 0 ? "🎵" : i % 3 === 1 ? "🎶" : "🎧"}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

@@ -8,10 +8,31 @@
   }
   
   .cassette-loader {
-    width: 120px; /* Adjust size if needed */
-    height: auto;
-    animation: spin 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
   }
+  .cassette-image {
+    width: 150px;
+    height: auto;
+    animation: spinCassette 2s linear infinite;
+    border-radius: 20px;
+  }
+  
+  /* Cassette Animation */
+@keyframes spinCassette {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
   
   .loading-text {
     text-align: center;
