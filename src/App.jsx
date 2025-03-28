@@ -12,9 +12,16 @@ function App() {
   const handleSubmit = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3333/api/lyrics", {
+
+      // Use environment variable or fallback to localhost for dev
+      const API_URL =
+        import.meta.env.VITE_API_URL ||
+        "https://ai-lyric-backend.onrender.com/api/lyrics";
+
+      const res = await axios.post(API_URL, {
         mood,
       });
+
       console.log("Lyrics Response:", res.data.lyrics);
       setLyrics(res.data.lyrics);
     } catch (err) {
