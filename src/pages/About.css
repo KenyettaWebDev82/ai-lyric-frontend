@@ -1,0 +1,157 @@
+/* --------------------- */
+/* About Wrapper Styles */
+/* --------------------- */
+.about-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    background: url("/vibe2.webp") no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  /* Main About Container */
+  .about-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+  }
+  
+  /* --------------------- */
+  /* About Title Styles */
+  /* --------------------- */
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* About Paragraph Text */
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  /* Highlighted Text */
+  .highlight {
+    font-style: italic;
+    color: #ff4d4d;
+  }
+  
+  /* Bold Text for Emphasis */
+  .bold {
+    font-weight: 700;
+    color: #ff7300;
+  }
+  
+  /* --------------------- */
+  /* Instructions Wrapper */
+  /* --------------------- */
+  .instructions-container {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 25px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: left;
+  }
+  
+  /* How-To Title */
+  .how-to-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* --------------------- */
+  /* How-To List Styles */
+  /* --------------------- */
+  .how-to-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    line-height: 1.8;
+  }
+  
+  /* Emoji Bullet Fix */
+  .how-to-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  /* Add Emoji as Bullets */
+  .how-to-list li::before {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    font-size: 1.3rem;
+  }
+  
+  /* Emoji Variations */
+  .how-to-list li:nth-child(1)::before {
+    content: "🎭";
+  }
+  .how-to-list li:nth-child(2)::before {
+    content: "🎵";
+  }
+  .how-to-list li:nth-child(3)::before {
+    content: "✨";
+  }
+  .how-to-list li:nth-child(4)::before {
+    content: "🎧";
+  }
+  .how-to-list li:nth-child(5)::before {
+    content: "📋";
+  }
+  .how-to-list li:nth-child(6)::before {
+    content: "🎶";
+  }
+  
+  /* Highlighted Bold Text */
+  .how-to-list .bold {
+    font-weight: 700;
+    color: #ff4d4d;
+  }
+  
+  /* --------------------- */
+  /* Responsive Design */
+  /* --------------------- */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 20px;
+    }
+  
+    .instructions-container {
+      padding: 20px;
+    }
+  
+    .about-title {
+      font-size: 2rem;
+    }
+  
+    .how-to-title {
+      font-size: 1.5rem;
+    }
+  
+    .how-to-list li {
+      font-size: 1rem;
+    }
+  }
+  
