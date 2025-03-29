@@ -1,0 +1,21 @@
+.features-list li {
+    display: flex;
+    align-items: center; /* Ensures icons and text align */
+    gap: 10px; /* Controls space between icon and text */
+    margin-bottom: 10px;
+    line-height: 1.5; /* Keeps the spacing consistent */
+  }
+  
+  .features-list li span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #5c2cad; /* Purple text to match theme */
+  }
+  .features-list li img,
+.features-list li svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle; /* Keeps icons centered with text */
+}

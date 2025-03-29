@@ -4,7 +4,9 @@ import NavBar from "./components/NavBar";
 import MoodSelector from "./components/MoodSelector";
 import CassetteLoader from "./components/CassetteLoader";
 import Footer from "./components/Footer";
-import About from "./pages/About"; // Import About Page
+import About from "./pages/About";
+import Features from "./pages/Features";
+import Contact from "./pages/Contact";
 import axios from "axios";
 import "./App.css";
 
@@ -14,6 +16,10 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
+    if (!mood) {
+      alert("❌ Please select a mood before generating lyrics!");
+      return;
+    }
     try {
       setLoading(true);
       const API_URL =
@@ -32,8 +38,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  const moodClass = mood ? `${mood}-bg` : "default-bg";
 
   const handleReset = () => {
     window.location.reload();
@@ -58,66 +62,55 @@ function App() {
           ))}
         </div>
         <NavBar />
-        <div className="app-container">
-          <Routes>
-            {/* Route for Home (Main Page) */}
-            <Route
-              path="/"
-              element={
-                <>
-                  <h1 className="app-title">🎧 Nova's AI Lyric Generator</h1>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="app-container">
+                <h1 className="app-title">🎧 Nova's AI Lyric Generator</h1>
 
-                  {/* Mood Selector */}
-                  <MoodSelector selectedMood={mood} onMoodChange={setMood} />
+                <MoodSelector selectedMood={mood} onMoodChange={setMood} />
 
-                  {/* Button Container for spacing */}
+                <div className="button-container">
+                  <button
+                    className="generate-button"
+                    onClick={handleSubmit}
+                    disabled={!mood}
+                  >
+                    Generate Lyrics
+                  </button>
+                </div>
+
+                {loading && (
+                  <div className="cassette-loader-container">
+                    <CassetteLoader />
+                  </div>
+                )}
+
+                {!loading && lyrics && (
+                  <div className={`lyrics-container ${mood}-bg`}>
+                    <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
+                    <pre className="lyrics-content">{lyrics}</pre>
+                  </div>
+                )}
+
+                {!loading && lyrics && (
                   <div className="button-container">
-                    <button
-                      className="generate-button"
-                      onClick={handleSubmit}
-                      disabled={!mood}
-                    >
-                      Generate Lyrics
+                    <button onClick={handleReset} className="reset-button">
+                      Reset
+                    </button>
+                    <button onClick={handleCopyLyrics} className="copy-button">
+                      Copy
                     </button>
                   </div>
-
-                  {/* Loader while generating */}
-                  {loading && (
-                    <div className="cassette-loader-container">
-                      <CassetteLoader />
-                    </div>
-                  )}
-
-                  {/* Generated Lyrics */}
-                  {!loading && lyrics && (
-                    <div className={`lyrics-container ${moodClass}`}>
-                      <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
-                      <pre className="lyrics-content">{lyrics}</pre>
-                    </div>
-                  )}
-
-                  {/* Reset & Copy Buttons */}
-                  {!loading && lyrics && (
-                    <div className="button-container">
-                      <button onClick={handleReset} className="reset-button">
-                        Reset
-                      </button>
-                      <button
-                        onClick={handleCopyLyrics}
-                        className="copy-button"
-                      >
-                        Copy
-                      </button>
-                    </div>
-                  )}
-                </>
-              }
-            />
-            
-            {/* About Page Route */}
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </div>
+                )}
+              </div>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
         <Footer />
       </div>
     </Router>
