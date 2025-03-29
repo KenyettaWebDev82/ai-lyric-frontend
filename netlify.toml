@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  VITE_API_URL = "https://ai-lyric-backend.onrender.com/api/lyrics"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
