@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import NavBar from "./components/NavBar";
 import MoodSelector from "./components/MoodSelector";
 import CassetteLoader from "./components/CassetteLoader";
+import Footer from "./components/Footer";
 import axios from "axios";
 import "./App.css";
 
@@ -12,8 +14,6 @@ function App() {
   const handleSubmit = async () => {
     try {
       setLoading(true);
-
-      // Use environment variable or fallback to localhost for dev
       const API_URL =
         import.meta.env.VITE_API_URL ||
         "https://ai-lyric-backend.onrender.com/api/lyrics";
@@ -49,46 +49,8 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <h1 className="app-title">🎧 Nova's AI Lyric Generator</h1>
-
-      {/* Mood Selector */}
-      <MoodSelector selectedMood={mood} onMoodChange={setMood} />
-
-      {/* Button Container for spacing */}
-      <div className="button-container">
-        <button
-          className="generate-button"
-          onClick={handleSubmit}
-          disabled={!mood}
-        >
-          🎵 Generate Lyrics
-        </button>
-      </div>
-
-      {/* Loader while generating */}
-      {loading && <CassetteLoader />}
-
-      {/* Generated Lyrics */}
-      {!loading && lyrics && (
-        <div className={`lyrics-container ${moodClass}`}>
-          <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
-          <pre className="lyrics-content">{lyrics}</pre>
-        </div>
-      )}
-
-      {/* Reset Button */}
-      {!loading && lyrics && (
-        <div className="button-container">
-          <button onClick={handleReset} className="reset-button">
-            Reset
-          </button>
-          <button onClick={handleCopyLyrics} className="copy-button">
-            Copy 
-          </button>
-        </div>
-      )}
-      {/* Falling music notes */}
+    <div className="app-wrapper">
+      {/* Falling Music Notes */}
       <div className="falling-notes">
         {Array.from({ length: 30 }).map((_, i) => (
           <span key={i} className="music-note">
@@ -96,6 +58,52 @@ function App() {
           </span>
         ))}
       </div>
+      <NavBar />
+      <div className="app-container">
+        <h1 className="app-title">🎧 Nova's AI Lyric Generator</h1>
+
+        {/* Mood Selector */}
+        <MoodSelector selectedMood={mood} onMoodChange={setMood} />
+
+        {/* Button Container for spacing */}
+        <div className="button-container">
+          <button
+            className="generate-button"
+            onClick={handleSubmit}
+            disabled={!mood}
+          >
+            Generate Lyrics
+          </button>
+        </div>
+
+        {/* Loader while generating */}
+        {loading && (
+          <div className="cassette-loader-container">
+            <CassetteLoader />
+          </div>
+        )}
+
+        {/* Generated Lyrics */}
+        {!loading && lyrics && (
+          <div className={`lyrics-container ${moodClass}`}>
+            <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
+            <pre className="lyrics-content">{lyrics}</pre>
+          </div>
+        )}
+
+        {/* Reset & Copy Buttons */}
+        {!loading && lyrics && (
+          <div className="button-container">
+            <button onClick={handleReset} className="reset-button">
+              Reset
+            </button>
+            <button onClick={handleCopyLyrics} className="copy-button">
+              Copy
+            </button>
+          </div>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }

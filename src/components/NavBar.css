@@ -1,0 +1,12 @@
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #ff007f, #ff4d4d, #ff7300);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Stay at the top without interfering */
+    z-index: 1000;
+  }
+  

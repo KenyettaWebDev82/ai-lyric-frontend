@@ -1,31 +1,49 @@
 /* --------------------- */
-/* Center everything and set background */
+/* Base Styles - Background & Global */
 /* --------------------- */
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+
+
+/* --------------------- */
+/* App Wrapper - Push Footer Down */
+/* --------------------- */
+/* Wrapper to fix layout */
+.app-wrapper {
   display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Push footer to the bottom */
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* App Content */
+/* --------------------- */
+/* App Container - Stretch Background */
+/* --------------------- */
+.app-container {
+  flex: 1; /* Fills available space between Navbar and Footer */
+  padding: 20px;
+  background: url("/vibe2.webp") no-repeat center top -80px;
+  background-size: cover; /* <-- Change from contain to cover */
+  background-attachment: fixed;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 100vw; /* Ensure it stretches fully */
+  max-width: 100vw; /* Optional: Keep max-width for control */
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
-  background: url("../public/vibe2.webp") no-repeat center center fixed;
-  background-size: cover;
-  image-rendering: crisp-edges;
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
+
 }
 
 /* --------------------- */
-/* Main App Container */
+/* NavBar - Full Width */
 /* --------------------- */
-.app-container {
+.navbar {
   width: 100%;
-  max-width: 1200px;
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #ff007f, #ff4d4d, #ff7300);
+  padding: 15px 20px;
+  text-align: left;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* --------------------- */
@@ -57,13 +75,14 @@ body {
 /* Universal Button Styles */
 /* --------------------- */
 button {
-  width: 140px;
-  height: 50px;
+  width: 150px;
+  height: 60px;
   padding: 12px 24px;
   border: none;
   border-radius: 12px;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  font-weight: 900;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
@@ -75,7 +94,7 @@ button {
 
 /* Generate Lyrics Button */
 .generate-button {
-  background: linear-gradient(135deg, #ff4d4d, #ff7300);
+  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
   color: white;
 }
 
@@ -86,7 +105,7 @@ button {
 
 /* Reset Button */
 .reset-button {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
   color: white;
 }
 
@@ -96,7 +115,7 @@ button {
 
 /* Copy Button */
 .copy-button {
-  background: linear-gradient(135deg, #ff4d4d, #ff7300);
+  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
   color: #fff;
 }
 
@@ -149,22 +168,18 @@ button {
   color: #333;
 }
 
-/* Lyrics Title */
-.lyrics-title {
-  font-size: 1.8rem;
-  font-weight: bold;
+/* --------------------- */
+/* Footer Styles - Fixed Bottom */
+/* --------------------- */
+.footer {
+  background: linear-gradient(90deg, #4b0082, #ff1493);
   color: #fff;
-  margin-bottom: 15px;
-}
-
-/* Lyrics Content */
-.lyrics-content {
-  white-space: pre-wrap;
-  font-size: 1.2rem;
-  font-family: "Courier New", Courier, monospace;
-  color: #000;
-  line-height: 1.6;
-  margin-top: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
 }
 
 /* --------------------- */
@@ -181,18 +196,85 @@ button {
   }
 }
 
+/* Music note styles */
 .music-note {
   position: fixed;
   top: -10%;
   font-size: 50px;
-  color: #111;
+  color: #ff4d4d; /* Make them colorful! */
   opacity: 0.6;
-  pointer-events: none;
+  pointer-events: none; /* Ensure notes don't block clicks */
   animation: fall linear infinite;
+  z-index: 0; /* Keep behind everything */
 }
 
+/* Container for falling notes */
+.falling-notes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* Set z-index so it's behind the NavBar */
+}
+
+/* Different animation delays and speeds for variety */
+.music-note:nth-child(1) {
+  left: 5%;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
+.music-note:nth-child(2) {
+  left: 15%;
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+.music-note:nth-child(3) {
+  left: 25%;
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+.music-note:nth-child(4) {
+  left: 35%;
+  animation-duration: 5.5s;
+  animation-delay: 1.5s;
+}
+.music-note:nth-child(5) {
+  left: 45%;
+  animation-duration: 6.5s;
+  animation-delay: 0.5s;
+}
+.music-note:nth-child(6) {
+  left: 55%;
+  animation-duration: 5.8s;
+  animation-delay: 1.8s;
+}
+.music-note:nth-child(7) {
+  left: 65%;
+  animation-duration: 6.2s;
+  animation-delay: 0.2s;
+}
+.music-note:nth-child(8) {
+  left: 75%;
+  animation-duration: 7.2s;
+  animation-delay: 1.2s;
+}
+.music-note:nth-child(9) {
+  left: 85%;
+  animation-duration: 5.5s;
+  animation-delay: 0.7s;
+}
+.music-note:nth-child(10) {
+  left: 95%;
+  animation-duration: 6.5s;
+  animation-delay: 0.9s;
+}
+
+
 /* --------------------- */
-/* Mobile Media Queries */
+/* Small Screens Fix */
 /* --------------------- */
 @media (max-width: 768px) {
   .button-container {

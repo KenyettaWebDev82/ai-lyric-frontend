@@ -1,26 +1,26 @@
-/* src/components/CassetteLoader.css */
-.cassette-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    margin-top: 20px;
-  }
-  
-  .cassette-loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  .cassette-image {
-    width: 150px;
-    height: auto;
-    animation: spinCassette 2s linear infinite;
-    border-radius: 20px;
-  }
-  
-  /* Cassette Animation */
+/* --------------------- */
+/* Cassette Loader Container */
+/* --------------------- */
+.cassette-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Add space between button and loader */
+  width: 100%;
+}
+
+/* --------------------- */
+/* Cassette Image Animation */
+/* --------------------- */
+.cassette-image {
+  width: 200px; /* Bigger cassette */
+  height: auto;
+  border-radius: 20px;
+  animation: spinCassette 2s linear infinite, pulse 1.5s infinite ease-in-out;
+}
+
+/* Rotate Cassette Effect */
 @keyframes spinCassette {
   0% {
     transform: rotateY(0deg);
@@ -33,24 +33,37 @@
   }
 }
 
-  
-  .loading-text {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #333;
+/* Pulse Effect for Cassette */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  
-  /* Add a smooth spinning effect */
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(-5deg); /* Slight tilt for a retro look */
-    }
-    100% {
-      transform: rotate(0deg);
-    }
+  50% {
+    transform: scale(1.05); /* Slightly larger */
   }
-  
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --------------------- */
+/* Generating Text Styles */
+/* --------------------- */
+.generating-text {
+  font-size: 2rem; /* Bigger text */
+  color: #ff4d4d;
+  margin-top: 10px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00c6ff, #4b0082); /* Blue to Purple */
+  animation: glowText 1.5s ease-in-out infinite alternate;
+}
+
+/* Glowing Text Animation */
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 20px #ff7300, 0 0 40px #ff1493, 0 0 60px #ff4d4d;
+  }
+  100% {
+    text-shadow: 0 0 25px #ff1493, 0 0 50px #ff7300, 0 0 70px #ff4d4d;
+  }
+}

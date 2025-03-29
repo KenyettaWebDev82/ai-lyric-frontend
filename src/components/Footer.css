@@ -1,0 +1,11 @@
+/* Footer */
+.footer {
+    width: 100%;
+    background: linear-gradient(90deg, #4b0082, #ff1493);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative; /* Stick to the bottom */
+    margin-top: auto; /* Push footer to bottom */
+  }
+  
