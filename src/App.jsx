@@ -84,7 +84,7 @@ function App() {
             🔄 Reset
           </button>
           <button onClick={handleCopyLyrics} className="copy-button">
-            📋 Copy Lyrics
+            📋 Copy 
           </button>
         </div>
       )}
