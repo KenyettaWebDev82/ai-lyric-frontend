@@ -1,123 +1,51 @@
-📚 Project Overview
-The frontend is built with:
-⚛️ ReactJS: Dynamic user interface and state management.
-🎨 CSS: Custom styles with animations and mood-based themes.
-📦 Axios: Handles HTTP requests to the backend API.
-🧠 AI Integration: Connects to the AI-powered backend for lyric generation.
+## 🎧 Nova's AI Lyric Generator
 
-🚀 Getting Started
-📥 1. Clone the Repository
+Nova’s AI Lyric Generator brings back the nostalgic vibes of cassette tapes from the 80s! With cutting-edge AI, Nova crafts personalized lyrics that match your mood—whether you're feeling dreamy, joyful, empowered, or a little melancholic. 🌈
+
+---
+
+### 🌟 **Key Features**
+- 🎵 **Custom AI Lyrics:** Generate unique lyrics based on your mood.
+- 🎨 **Mood-Based Themes:** Choose between dreamy, romantic, joyful, melancholy, and empowered moods.
+- 🏀 **Cassette Loader Animation:** Enjoy a retro cassette animation while Nova crafts your lyrics.
+- 📋 **One-Click Copy:** Easily copy your generated lyrics and share the magic.
+- 🔄 **Reset & Refresh:** Start fresh anytime with a simple reset.
+
+---
+
+### 🚀 **New Additions**
+- 📝 **About Page:** Explore the nostalgic story behind Nova’s AI Lyric Generator.
+- 🔥 **Features Page:** See what makes Nova cool and different.
+- 📩 **Contact Page:** Stay connected, collab, and vibe with Kenyetta!
+
+---
+
+### 📚 **How to Use Nova’s AI Lyric Generator**
+1. 🎧 **Choose Your Mood:** Pick a mood that matches your vibe.
+2. 🎵 **Generate Lyrics:** Click the "Generate Lyrics" button and let Nova work the magic.
+3. ✨ **Watch the Magic:** Enjoy the fun cassette animation as lyrics generate.
+4. 📋 **Explore & Copy Your Lyrics:** View, reset, or copy your lyrics in one click!
+
+---
+
+### 🛠️ **Getting Started**
+To run Nova's AI Lyric Generator locally:
+# Clone the repo
 git clone https://github.com/PursuitMadeMe/ai-lyric-frontend.git
-cd ai-lyric-frontend
 
-📦 2. Install Dependencies
-Run the following command to install required packages:
+# Install dependencies
 npm install
 
-⚡️ 3. Run the Frontend
-Start the frontend on localhost:3000:
-npm run start
+# Run the app
+npm run dev
 
-🎨 Frontend Features
-📝 1. Mood Selection
-Users can select a mood:
-Dreamy
-Romantic
-Melancholy
-Joyful
-Empowered
-The mood changes the background and styling dynamically.
+---
 
-🎵 2. Lyric Generation
-Clicking the "Generate Lyrics" button sends a request to the backend API.
-Lyrics are generated and displayed with a mood-based background.
+### 📩 **Connect With Me**
+- 🌌 [GitHub](https://github.com/PursuitMadeMe)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/kenyetta-griffin/)
+- 🌐 [Portfolio](https://kenyettagriffin.com/)
 
-🕹️ 3. Copy & Reset Buttons
-✅ Copy Lyrics: Copies generated lyrics to the clipboard.
-🔄 Reset: Resets the mood and generated lyrics.
+---
 
-🎼 4. Falling Music Notes Animation
-🎶 Animated music notes falling in the background.
-Adjustable speed, size, and opacity.
-
-📂 Project Structure
-/ai-lyric-frontend
-├── /public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── vibe2.webp
-├── /src
-│   ├── /components
-│   │   ├── CassetteLoader.jsx    # Cassette loader animation
-│   │   └── MoodSelector.jsx      # Mood selection component
-│   ├── /css
-│   │   └── App.css               # Main CSS styles
-│   ├── App.js                    # Main App component
-│   ├── index.js                  # Entry point
-│   └── package.json
-└── README.md
-
-🔥 API Integration
-🎵 POST /api/lyrics
-URL: http://localhost:3333/api/lyrics
-Method: POST
-Request Body:
-{
-  "mood": "dreamy" | "romantic" | "melancholy" | "joyful" | "empowered"
-}
-Success Response:
-{
-  "lyrics": "Generated lyrics based on the selected mood."
-}
-Error Response:
-{
-  "error": "Failed to generate lyrics. Please try again later."
-}
-
-🛠️ Configuration
-🎯 1. Backend API Endpoint
-Update the backend API URL if deployed:
-const API_URL = "http://localhost:3333/api/lyrics";
-If you plan to deploy:
-
-Update the API_URL to the production backend URL.
-
-📄 Deployment Instructions
-🌐 1. Build the Frontend
-npm run build
-
-🚀 2. Deploy to Netlify, Vercel, or GitHub Pages
-For Netlify:
-
-Drag and drop the build/ folder into Netlify.
-
-Configure environment variables if needed.
-
-🎨 Customization
-🎵 1. Change Background Image
-Replace vibe2.webp in /public with your desired background image.
-
-🎼 2. Adjust Music Note Speed or Size
-Modify the App.css styles for:
-Size: font-size in .music-note.
-Speed: animation-duration in @keyframes fall.
-
-🎯 Known Issues & Fixes
-If the lyrics don’t generate:
-Check if the backend is running on port 3333.
-Verify the API endpoint matches the backend URL.
-
-🎉 Future Enhancements
-🎤 Add more moods and lyric styles.
-🎧 Integrate advanced AI models.
-📝 Enable user input for personalized lyrics.
-
-📣 Contributors
-👩‍💻 Kenyetta Griffin - GitHub
-
-📄 License
-This project is licensed under the MIT License.
-
-🎉 Done!
-Your frontend is ready to run and generate amazing lyrics! 🎧✨
-
+### 🌟 **Thank You For Exploring Nova!**
