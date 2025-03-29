@@ -10,54 +10,115 @@ body {
   align-items: center;
   background: url("../public/vibe2.webp") no-repeat center center fixed;
   background-size: cover;
-  image-rendering: crisp-edges; /* Ensures sharper images */
+  image-rendering: crisp-edges;
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
 }
 
-/* Button container for spacing */
-.button-container {
-  margin-top: 20px;
+/* --------------------- */
+/* Main App Container */
+/* --------------------- */
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------- */
+/* Header Styles */
+/* --------------------- */
+.app-title {
+  font-family: "Bangers", cursive;
+  font-size: 2.5rem;
+  color: #ff006e;
   margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #ff007f, #ff4d4d, #ff7300, #ff1493, #4b0082);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------------------- */
+/* Button Container */
+/* --------------------- */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+/* --------------------- */
+/* Universal Button Styles */
+/* --------------------- */
+button {
+  width: 140px;
+  height: 50px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 /* Generate Lyrics Button */
 .generate-button {
-  padding: 12px 24px;
   background: linear-gradient(135deg, #ff4d4d, #ff7300);
   color: white;
-  font-family: "Poppins", sans-serif;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 0, 102, 0.8);
-  transition: all 0.3s ease-in-out;
 }
 
 .generate-button:hover {
   background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  box-shadow: 0 0 15px #ff007f, 0 0 25px #ff4d4d;
-  transform: translateY(-3px);
+  color: white;
 }
 
 /* Reset Button */
 .reset-button {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  padding: 12px 24px;
-  font-family: "Poppins", sans-serif;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
 }
 
 .reset-button:hover {
-  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
-  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
 }
 
-/* Mood background styles */
+/* Copy Button */
+.copy-button {
+  background: linear-gradient(135deg, #ff4d4d, #ff7300);
+  color: #fff;
+}
+
+.copy-button:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+}
+
+/* --------------------- */
+/* Lyrics Container */
+/* --------------------- */
+.lyrics-container {
+  max-height: 400px;
+  width: 90%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  margin: 20px auto;
+  overflow-y: auto;
+}
+
+/* Mood Background Styles */
 .lyrics-container.dreamy-bg {
   background: linear-gradient(135deg, #8e44ad, #3498db);
   color: #fff;
@@ -88,19 +149,7 @@ body {
   color: #333;
 }
 
-/* Lyrics container styles */
-.lyrics-container {
-  max-height: 400px;
-  width: 90%;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  margin: 0 auto;
-  overflow-y: auto;
-}
-
-/* Lyrics title and content styles */
+/* Lyrics Title */
 .lyrics-title {
   font-size: 1.8rem;
   font-weight: bold;
@@ -108,208 +157,19 @@ body {
   margin-bottom: 15px;
 }
 
-/* Main container styling */
-/* Main container styling */
-.app-container {
-  width: 100%; /* Widen container */
-  max-width: 2500px; /* Increase max width */
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  animation: pulseGlow 1.5s infinite alternate;
-  margin-top: 200px; /* Pull down to reveal more of the background */
-  margin-bottom: 40px;
-}
-
-
-/* Header styling */
-.app-title {
-  font-family: "Bangers", cursive;
-  font-size: 2.5rem;
-  color: #ff006e;
-  text-shadow: none;
-  margin-bottom: 20px;
-  letter-spacing: 1.5px;
-  background: linear-gradient(90deg, #ff007f, #ff4d4d, #ff7300, #ff1493, #4b0082);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: pulseGlow 1.5s infinite alternate;
-}
-
-/* Glow effect for container */
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 15px #ff00ff, 0 0 25px #fffc00, 0 0 35px #00fff2;
-  }
-  100% {
-    box-shadow: 0 0 25px #fffc00, 0 0 35px #ff00ff, 0 0 45px #00fff2;
-  }
-}
-
-/* Button container for spacing */
-/* Button Container - Add Flex and Space */
-.button-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px; /* Adds space between buttons */
-}
-
-
-/* Generate Lyrics Button */
-.generate-button {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #ff4d4d, #ff7300);
-  color: white;
-  font-family: "Poppins", sans-serif;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 0, 102, 0.8);
-  transition: all 0.3s ease-in-out;
-}
-
-.generate-button:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  box-shadow: 0 0 15px #ff007f, 0 0 25px #ff4d4d;
-  transform: translateY(-3px);
-}
-
-/* Reset Button */
-.reset-button {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #ff4d4d, #ff7300);
-  color: white;
-  font-family: "Poppins", sans-serif;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 0, 102, 0.8);
-  transition: all 0.3s ease-in-out;
-}
-
-.reset-button:hover {
- background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  box-shadow: 0 0 15px #ff007f, 0 0 25px #ff4d4d;
-  transform: translateY(-3px);
-}
-
-/* Copy Button - Same as Reset */
-.copy-button {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #ff4d4d, #ff7300);
-  color: white;
-  font-family: "Poppins", sans-serif;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 0, 102, 0.8);
-  transition: all 0.3s ease-in-out;
-}
-
-.copy-button:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  box-shadow: 0 0 15px #ff007f, 0 0 25px #ff4d4d;
-  transform: translateY(-3px);
-}
-
-button {
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(255, 0, 102, 0.8);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-/* Ensure both buttons are the same width */
-button.generate-button,
-button.reset-button,
-button.copy-button {
-  width: 140px;
-  height: 60px;
-  padding: 12px 24px;
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-/* Container to evenly space buttons */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-/* Mood background styles */
-.dreamy-bg {
-  background: linear-gradient(135deg, #8e44ad, #3498db);
-  color: #fff;
-}
-
-.romantic-bg {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: #fff;
-}
-
-.melancholy-bg {
-  background: linear-gradient(135deg, #2c3e50, #4b0082);
-  color: #fff;
-}
-
-.joyful-bg {
-  background: linear-gradient(135deg, #ff7300, #ffeb3b);
-  color: #333;
-}
-
-.empowered-bg {
-  background: linear-gradient(135deg, #ff1493, #4b0082);
-  color: #fff;
-}
-
-.default-bg {
-  background: linear-gradient(to right, #e0eafc, #cfdef3);
-  color: #333;
-}
-
-/* Lyrics container styles */
-.lyrics-container {
-  max-height: 400px;
-  width: 90%;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  margin: 20px auto;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-
-
-/* Lyrics title and content styles */
-.lyrics-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 15px;
-}
-
+/* Lyrics Content */
 .lyrics-content {
   white-space: pre-wrap;
   font-size: 1.2rem;
   font-family: "Courier New", Courier, monospace;
-  color: #000; /* 🎨 Black for better visibility */
+  color: #000;
   line-height: 1.6;
   margin-top: 10px;
 }
 
+/* --------------------- */
 /* Falling Music Notes Animation */
+/* --------------------- */
 @keyframes fall {
   0% {
     transform: translateY(-10%);
@@ -321,90 +181,26 @@ button.copy-button {
   }
 }
 
-/* Individual music note styles */
 .music-note {
   position: fixed;
   top: -10%;
   font-size: 50px;
-  color: #111; /* Back to Black */
+  color: #111;
   opacity: 0.6;
   pointer-events: none;
   animation: fall linear infinite;
 }
 
-/* Generate 30 music notes with different speeds and delays */
-.music-note:nth-child(1) {
-  left: 5%;
-  animation-duration: 6s;
-  animation-delay: 0s;
+/* --------------------- */
+/* Mobile Media Queries */
+/* --------------------- */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
 }
-
-.music-note:nth-child(2) {
-  left: 15%;
-  animation-duration: 5s;
-  animation-delay: 1s;
-}
-
-.music-note:nth-child(3) {
-  left: 25%;
-  animation-duration: 7s;
-  animation-delay: 2s;
-}
-
-.music-note:nth-child(4) {
-  left: 35%;
-  animation-duration: 5.5s;
-  animation-delay: 1.5s;
-}
-
-.music-note:nth-child(5) {
-  left: 45%;
-  animation-duration: 6.5s;
-  animation-delay: 0.5s;
-}
-
-.music-note:nth-child(6) {
-  left: 55%;
-  animation-duration: 5.8s;
-  animation-delay: 1.8s;
-}
-
-.music-note:nth-child(7) {
-  left: 65%;
-  animation-duration: 6.2s;
-  animation-delay: 0.2s;
-}
-
-.music-note:nth-child(8) {
-  left: 75%;
-  animation-duration: 7.2s;
-  animation-delay: 1.2s;
-}
-
-.music-note:nth-child(9) {
-  left: 85%;
-  animation-duration: 5.5s;
-  animation-delay: 0.7s;
-}
-
-.music-note:nth-child(10) {
-  left: 95%;
-  animation-duration: 6.5s;
-  animation-delay: 0.9s;
-}
-
-/* Container for falling notes */
-.falling-notes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-
-
-
-

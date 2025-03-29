@@ -81,10 +81,10 @@ function App() {
       {!loading && lyrics && (
         <div className="button-container">
           <button onClick={handleReset} className="reset-button">
-            🔄 Reset
+            Reset
           </button>
           <button onClick={handleCopyLyrics} className="copy-button">
-            📋 Copy 
+            Copy 
           </button>
         </div>
       )}
