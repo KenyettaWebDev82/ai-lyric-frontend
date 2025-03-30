@@ -2,7 +2,6 @@
 /* Base Styles - Background & Global */
 /* --------------------- */
 
-
 /* --------------------- */
 /* App Wrapper - Push Footer Down */
 /* --------------------- */
@@ -31,7 +30,6 @@
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-
 }
 
 /* --------------------- */
@@ -52,12 +50,31 @@
 .app-title {
   font-family: "Bangers", cursive;
   font-size: 2.5rem;
-  color: #ff006e;
+  color: black;
   margin-bottom: 20px;
   letter-spacing: 1.5px;
-  background: linear-gradient(90deg, #ff007f, #ff4d4d, #ff7300, #ff1493, #4b0082);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Adds subtle depth for readability */
+}
+
+.checkbox-label {
+  font-size: 1.3rem; /* Increased text size */
+  color: #ffffff; /* Pure white for brightness */
+  font-weight: 600; /* Slightly bold for better visibility */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Stronger shadow for contrast */
+  cursor: pointer;
+  padding: 5px 10px; /* Adds spacing around labels for clarity */
+  margin-right: 10px;
+}
+
+.checkbox-label {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Transparent dark background for readability */
+  border-radius: 5px;
 }
 
 /* --------------------- */
@@ -95,7 +112,7 @@ button {
 /* Generate Lyrics Button */
 .generate-button {
   background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: white;
+  color: black;
 }
 
 .generate-button:hover {
@@ -106,21 +123,23 @@ button {
 /* Reset Button */
 .reset-button {
   background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: white;
+  color: black;
 }
 
 .reset-button:hover {
   background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
 }
 
 /* Copy Button */
 .copy-button {
   background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: #fff;
+  color: black;
 }
 
 .copy-button:hover {
   background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
 }
 
 /* --------------------- */
@@ -271,7 +290,6 @@ button {
   animation-duration: 6.5s;
   animation-delay: 0.9s;
 }
-
 
 /* --------------------- */
 /* Small Screens Fix */

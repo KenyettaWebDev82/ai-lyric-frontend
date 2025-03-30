@@ -5,13 +5,14 @@ const MoodSelector = ({ selectedMood, onMoodChange }) => {
 
   return (
     <div className="flex flex-col space-y-2 p-4">
-      <h2 className="text-xl font-bold mb-2">🎵 Choose a Mood:</h2>
+      <h2 className="text-2xl font-bold text-white drop-shadow-lg mb-2">🎵 Choose a Mood:</h2>
       {moods.map((mood) => (
-        <label key={mood} className="flex items-center space-x-2">
+        <label key={mood} className="checkbox-label flex items-center space-x-3">
           <input
             type="checkbox"
             checked={selectedMood === mood}
             onChange={() => onMoodChange(mood)}
+            className="w-5 h-5"
           />
           <span className="capitalize">{mood}</span>
         </label>
