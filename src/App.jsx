@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import MoodSelector from "./components/MoodSelector";
 import CassetteLoader from "./components/CassetteLoader";
@@ -63,48 +66,20 @@ function App() {
         </div>
         <NavBar />
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/"
             element={
-              <div className="app-container">
-                <h1 className="app-title">🎧 Nova's AI Lyric Generator</h1>
-
-                <MoodSelector selectedMood={mood} onMoodChange={setMood} />
-
-                <div className="button-container">
-                  <button
-                    className="generate-button"
-                    onClick={handleSubmit}
-                    disabled={!mood}
-                  >
-                    Generate Lyrics
-                  </button>
-                </div>
-
-                {loading && (
-                  <div className="cassette-loader-container">
-                    <CassetteLoader />
-                  </div>
-                )}
-
-                {!loading && lyrics && (
-                  <div className={`lyrics-container ${mood}-bg`}>
-                    <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
-                    <pre className="lyrics-content">{lyrics}</pre>
-                  </div>
-                )}
-
-                {!loading && lyrics && (
-                  <div className="button-container">
-                    <button onClick={handleReset} className="reset-button">
-                      Reset
-                    </button>
-                    <button onClick={handleCopyLyrics} className="copy-button">
-                      Copy
-                    </button>
-                  </div>
-                )}
-              </div>
+              <Home
+                mood={mood}
+                setMood={setMood}
+                lyrics={lyrics}
+                loading={loading}
+                handleSubmit={handleSubmit}
+                handleReset={handleReset}
+                handleCopyLyrics={handleCopyLyrics}
+              />
             }
           />
           <Route path="/about" element={<About />} />
