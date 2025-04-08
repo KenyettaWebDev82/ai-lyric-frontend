@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signOut, onAuthStateChanged } from 'firebase/auth';
@@ -24,6 +25,10 @@ const NavBar = () => {
       console.error('Logout failed:', error.message);
     }
   };
+  
+  const location = useLocation();
+  if (location.pathname === "/register") return null;
+  
 
   return (
     <nav className="navbar">
