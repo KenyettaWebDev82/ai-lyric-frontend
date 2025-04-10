@@ -147,14 +147,22 @@ button {
 /* --------------------- */
 .lyrics-container {
   max-height: 400px;
-  width: 90%;
+  width: 55%;
   padding: 20px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   margin: 20px auto;
   overflow-y: auto;
+  
 }
+
+.lyrics-content{
+text-align: center;
+font-weight: bold;
+font-size: 18px;
+}
+
 
 /* Mood Background Styles */
 .lyrics-container.dreamy-bg {

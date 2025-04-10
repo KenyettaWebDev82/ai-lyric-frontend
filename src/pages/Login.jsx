@@ -2,60 +2,62 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-
   const navigate = useNavigate();
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      setMessage(`✅ Logged in as: ${user.email}`);
-      navigate("/"); // 👈 this sends the user to your homepage
+      setMessage(`✅ Logged in as: ${userCredential.user.email}`);
+      navigate('/');
     } catch (error) {
       setMessage(`❌ Login failed: ${error.message}`);
     }
   };
 
-  // 🟢 Google Sign-In logic
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      setMessage(`✅ Logged in with Google: ${user.displayName}`);
-      navigate("/"); // 👈 send Google users to homepage too
+      setMessage(`✅ Logged in with Google: ${result.user.displayName}`);
+      navigate('/');
     } catch (error) {
       setMessage(`❌ Google Sign-in failed: ${error.message}`);
     }
   };
 
   return (
-    <div className="auth-wrapper">
-      <h2 className="auth-title">🔐 Login to Nova</h2>
+    <div className="login-page">
+      <div className="train-wrapper">
+        <img src="/train-nova.png" alt="Moving Train" className="train-img" />
+        <img src="/train-nova.png" alt="Moving Train" className="train-img" />
+        <img src="/train-nova.png" alt="Moving Train" className="train-img" />
+        <img src="/train-nova.png" alt="Moving Train" className="train-img" />
+      </div>
 
-      <form onSubmit={handleLogin} className="auth-form">
-        <input type="email" placeholder="Email"
-          value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password"
-          value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit" className="auth-button">Login</button>
-      </form>
+      <div className="login-content">
+        <form className="graffiti-login-form" onSubmit={handleLogin}>
+          <h2 className="graffiti-title">Login to Nova</h2>
 
-      <hr style={{ margin: '1rem 0' }} />
+          <label>Email</label>
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-      <button onClick={handleGoogleSignIn} className="auth-button">
-        Sign in with Google
-      </button>
+          <label>Password</label>
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
-      <p className="auth-message">{message}</p>
+          <button type="submit">Login</button>
+
+          <button type="button" onClick={handleGoogleSignIn}>Sign in with Google</button>
+
+          <p className="graffiti-message">{message}</p>
+        </form>
+      </div>
     </div>
   );
 };
