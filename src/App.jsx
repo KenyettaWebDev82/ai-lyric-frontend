@@ -19,21 +19,18 @@ function App() {
   const [lyrics, setLyrics] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
-    if (!mood) {
-      alert("❌ Please select a mood before generating lyrics!");
-      return;
-    }
+  const handleSubmit = async (mood, genre) => {
     try {
       setLoading(true);
       const API_URL =
         import.meta.env.VITE_API_URL ||
         "https://ai-lyric-backend.onrender.com/api/lyrics";
-
+  
       const res = await axios.post(API_URL, {
         mood,
+        genre,
       });
-
+  
       console.log("Lyrics Response:", res.data.lyrics);
       setLyrics(res.data.lyrics);
     } catch (err) {
@@ -42,6 +39,7 @@ function App() {
       setLoading(false);
     }
   };
+  
 
   const handleReset = () => {
     window.location.reload();

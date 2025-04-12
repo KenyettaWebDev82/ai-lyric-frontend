@@ -8,7 +8,7 @@ const Contact = () => {
       <h2 className="contact-title">📞 Get in Touch</h2>
       <p className="contact-text">
         Wanna stay connected, collab, and build some dope stuff? 🎸 <br />
-        Ask me questions, or vibe about some good music... 🎶
+        Ask me questions, or vibe about some good music... 🎶<br/>
         Follow me on my socials or check out my portfolio to see what’s next! 🎉
       </p>
 

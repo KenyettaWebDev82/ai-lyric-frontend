@@ -1,11 +1,19 @@
-// src/pages/Home.jsx
-import React, { useEffect, useState } from 'react';
-import { auth } from '../firebase';
-import MoodSelector from '../components/MoodSelector';
-import CassetteLoader from '../components/CassetteLoader';
+import React, { useEffect, useState } from "react";
+import { auth } from "../firebase";
+import MoodSelector from "../components/MoodSelector";
+import CassetteLoader from "../components/CassetteLoader";
 
-const Home = ({ mood, setMood, lyrics, loading, handleSubmit, handleReset, handleCopyLyrics }) => {
-  const [displayName, setDisplayName] = useState('');
+const Home = ({
+  mood,
+  setMood,
+  lyrics,
+  loading,
+  handleSubmit,
+  handleReset,
+  handleCopyLyrics,
+}) => {
+  const [displayName, setDisplayName] = useState("");
+  const [genre, setGenre] = useState(""); // new genre state
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -20,13 +28,34 @@ const Home = ({ mood, setMood, lyrics, loading, handleSubmit, handleReset, handl
 
       <h1 className="app-title">Nova's AI Lyric Generator</h1>
 
+      {/* Genre Dropdown */}
+      <h3>🎤 Select a Genre:</h3>
+      <select
+        value={genre}
+        onChange={(e) => setGenre(e.target.value)}
+        className="genre-dropdown"
+      >
+        <option value="">-- Select Genre --</option>
+        <option value="Hip Hop">Hip Hop</option>
+        <option value="R&B">R&B</option>
+        <option value="Country">Country</option>
+        <option value="Pop">Pop</option>
+        <option value="Rock">Rock</option>
+      </select>
+      
       <MoodSelector selectedMood={mood} onMoodChange={setMood} />
 
       <div className="button-container">
         <button
           className="generate-button"
-          onClick={handleSubmit}
-          disabled={!mood}
+          onClick={async () => {
+            if (!mood || !genre) {
+              alert("❌ Please select a mood and genre!");
+              return;
+            }
+            await handleSubmit(mood, genre);
+          }}
+          disabled={!mood || !genre}
         >
           Generate Lyrics
         </button>
