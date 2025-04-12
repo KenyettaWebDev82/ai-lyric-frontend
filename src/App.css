@@ -108,6 +108,48 @@
   ); /* Transparent dark background for readability */
   border-radius: 5px;
 }
+/* --------------------- */
+
+.singing-toggle {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-label {
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 2px 2px 8px #ff007f, 0 0 10px #00ff85;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-label input[type="checkbox"] {
+  transform: scale(1.5);
+  accent-color: #00ff85;
+}
+
+.play-button,
+.stop-button {
+  background: linear-gradient(90deg, #00c6ff, #00ff85);
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-button:hover,
+.stop-button:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
+}
 
 /* --------------------- */
 /* Button Container */
