@@ -6,67 +6,44 @@ const About = () => {
     <div className="about-wrapper">
       <div className="about-container">
         {/* About App Section */}
-        <h1 className="about-title">🎧 Bringing Back the Soul of Music! 🎵</h1>
+        <h1 className="about-title">🎧 Welcome to Nova's AI Lyric Generator 🎵</h1>
         <p className="about-text">
-          Remember the good ol' days when cassette tapes ruled the airwaves? 🎶
-          Back then, music wasn’t just something you listened to—it was an{" "}
-          <span className="highlight">*EXPERIENCE*</span>. Every tape came with
-          the lyrics printed out so you could sing along, feel every word, and
-          truly vibe with the music.
+          Nova’s AI Lyric Generator brings back that old-school cassette tape vibe — where music wasn’t just heard... it was *felt*. 
         </p>
+
         <p className="about-text">
-          <span className="bold">Nova's AI Lyric Generator</span> is here to
-          bring that magic back! We've combined that nostalgic feeling with
-          cutting-edge AI to create an experience where music meets emotions. 🎤✨
+          Inspired by the classic mixtape era, Nova uses modern AI magic to help you create custom song lyrics based on your mood and favorite music genre. Whether you're feeling hype, heartbroken, or anything in between — Nova’s got lyrics for that.
         </p>
+
         <p className="about-text">
-          Whether you're feeling dreamy, empowered, joyful, or a little
-          melancholy—Nova generates custom lyrics that reflect your mood. It’s
-          like having a personalized mixtape but with lyrics crafted{" "}
-          <span className="bold">"JUST 4 YOU"</span>! 🎧
+          But Nova doesn’t stop there — turn on *Singing Mode* and hear your lyrics performed back to you, karaoke-style. It’s a whole vibe.
         </p>
+
         <p className="about-text">
-          Nova isn't just an app—it's a{" "}
-          <span className="highlight">VIBE</span>. It’s where technology and
-          emotion collide to give music back its heart and soul. So get ready to
-          express yourself, tap into your feelings, and bring back the
-          sing-along magic of cassette tapes—one AI lyric at a time! 🚀
-        </p>
-        <p className="about-text">
-          Let’s make some music that moves the soul! 💓🎧
+          Music is personal. Nova makes sure your lyrics feel that way too. Let’s create something that's *so you*.
         </p>
 
         {/* Instructions Section */}
         <div className="instructions-container">
-          <h2 className="how-to-title">🎵 How to Use Nova's AI Lyric Generator</h2>
+          <h2 className="how-to-title">🚀 How to Use Nova's AI Lyric Generator</h2>
           <ul className="how-to-list">
             <li>
-              <span className="bold">Choose Your Mood:</span> Select how you're
-              feeling from the mood options: dreamy, romantic, melancholy,
-              joyful, or empowered.
+              <span className="bold">1. Select a Genre:</span> Choose from Hip Hop, R&B, Pop, Country, or Rock for authentic lyric style.
             </li>
             <li>
-              <span className="bold">Hit the "Generate Lyrics" Button:</span>{" "}
-              Nova will craft unique lyrics that match your selected mood!
+              <span className="bold">2. Pick Your Mood:</span> Dreamy, Romantic, Empowered, Joyful, or Melancholy — how you feel shapes your song.
             </li>
             <li>
-              <span className="bold">Watch the Magic Happen:</span> Enjoy the fun
-              cassette animation while Nova processes your request.
+              <span className="bold">3. Turn on Singing Mode (Optional):</span> Want Nova to *sing* your lyrics back? Just toggle it on!
             </li>
             <li>
-              <span className="bold">Explore Your Lyrics:</span> Your custom
-              lyrics will appear, reflecting your mood. Want something new? Try
-              another vibe!
+              <span className="bold">4. Hit "Generate Lyrics":</span> Watch the retro cassette spin while Nova cooks up your custom song.
             </li>
             <li>
-              <span className="bold">Copy or Reset:</span> Hit{" "}
-              <span className="bold">"Copy"</span> to save your lyrics or{" "}
-              <span className="bold">"Reset"</span> to start fresh.
+              <span className="bold">5. Play, Copy or Reset:</span> Listen to your lyrics in karaoke style, copy them, or start over anytime.
             </li>
             <li>
-              <span className="bold">Sing Along & Vibe Out!</span> Relive the
-              magic of music and let Nova bring the soul back into your
-              experience!
+              <span className="bold">6. Vibe Out:</span> Share it, sing it, or save it for later — it’s your vibe, your lyrics, your story.
             </li>
           </ul>
         </div>
