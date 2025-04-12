@@ -1,21 +1,34 @@
+.features-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 30px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.features-title {
+  font-size: 2rem;
+  color: #4b0082;
+  margin-bottom: 20px;
+}
+
+.features-list {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: #333;
+  padding-left: 0;
+  list-style: none;
+}
+
 .features-list li {
-    display: flex;
-    align-items: center; /* Ensures icons and text align */
-    gap: 10px; /* Controls space between icon and text */
-    margin-bottom: 10px;
-    line-height: 1.5; /* Keeps the spacing consistent */
-  }
-  
-  .features-list li span {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    color: #5c2cad; /* Purple text to match theme */
-  }
-  .features-list li img,
-.features-list li svg {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle; /* Keeps icons centered with text */
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.feature-title {
+  color: #ff007f;
+  font-weight: 700;
 }
