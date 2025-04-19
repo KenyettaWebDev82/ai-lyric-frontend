@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-
+import "./MyLyrics.css"
 function MyLyrics() {
   const [savedLyrics, setSavedLyrics] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -62,20 +62,20 @@ const NavBar = () => {
             Features
           </NavLink>
           <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Contact
-          </NavLink>
-          <NavLink
             to="/mylyrics"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
           >
             My Lyrics
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Contact
           </NavLink>
         </div>
 

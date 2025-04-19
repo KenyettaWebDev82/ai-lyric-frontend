@@ -145,7 +145,7 @@ const Home = ({
         </button>
         <div className="title-input-container">
           <label htmlFor="title" className="input-label">
-            📝 Title of Song:
+            📝 Title of Song
           </label>
           <input
             id="title"

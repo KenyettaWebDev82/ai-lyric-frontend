@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -14,11 +14,12 @@ import Footer from "./components/Footer";
 import axios from "axios";
 import "./App.css";
 
-function App() {
+function AppWrapper() {
   const [mood, setMood] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [loading, setLoading] = useState(false);
-  const [singingMode, setSingingMode] = useState(false); // moved here
+  const [singingMode, setSingingMode] = useState(false);
+  const location = useLocation(); // ✅ Add this to detect route
 
   const handleSubmit = async (mood, genre, singingMode) => {
     try {
@@ -30,7 +31,7 @@ function App() {
       const res = await axios.post(API_URL, {
         mood,
         genre,
-        singingMode,  // pass singing mode
+        singingMode,
       });
 
       setLyrics(res.data.lyrics);
@@ -51,7 +52,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       <div className="app-wrapper">
         <NavBar />
         <Routes>
@@ -82,8 +83,29 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </Router>
+
+      {/* ✅ Show falling notes ONLY on /mylyrics */}
+      {location.pathname === "/mylyrics" && (
+        <div className="falling-notes">
+          {[...Array(15)].map((_, i) => {
+            const icons = ["🎵", "🎶", "🎧"];
+            const randomIcon = icons[i % icons.length];
+            return (
+              <div key={i} className="music-note">
+                {randomIcon}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AppWrapper />
+    </Router>
+  );
+}

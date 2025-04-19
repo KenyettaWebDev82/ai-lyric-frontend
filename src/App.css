@@ -295,11 +295,15 @@ font-size: 18px;
 }
 
 .input-label {
+  color: black;
+  text-shadow: 2px 2px 8px #00ff85, 0 0 10px #ff007f;
   font-weight: bold;
-  color: white;
-  display: block;
-  margin-bottom: 5px;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
 }
+
 
 .title-input {
   padding: 10px;
@@ -307,8 +311,8 @@ font-size: 18px;
   width: 60%;
   border-radius: 10px;
   border: 2px solid #ff4dd2;
-  background-color: #1e1e1e;
-  color: #fff;
+  background-color: white;
+  color: black;
   box-shadow: 0 0 10px #ff4dd2;
   text-align: center;
 }
