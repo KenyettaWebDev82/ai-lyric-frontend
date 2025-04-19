@@ -213,6 +213,18 @@ button {
   color: white;
 }
 
+.save-btn {
+  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
+  color: black;
+  font-weight: bold;
+}
+
+.save-btn:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
+}
+/* --------------------- */
+
 /* Reset Button */
 .reset-button {
   background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
