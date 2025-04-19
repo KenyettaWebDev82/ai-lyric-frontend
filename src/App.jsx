@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import PrivateRoute from "./components/PrivateRoute";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import About from "./pages/About";
 import Features from "./pages/Features";
 import Contact from "./pages/Contact";
+import MyLyrics from "./pages/MyLyrics";
+
+import PrivateRoute from "./components/PrivateRoute";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import axios from "axios";
 import "./App.css";
 
@@ -76,6 +78,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Features />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/mylyrics" element={<MyLyrics />} />
         </Routes>
         <Footer />
       </div>

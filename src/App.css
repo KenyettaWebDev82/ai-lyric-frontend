@@ -183,6 +183,25 @@ button {
   gap: 8px;
 }
 
+.delete-button {
+  background: linear-gradient(to right, #ff007f, #ff4dd2); /* neon pink to lighter pink */
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff4dd2, 0 0 20px #ff007f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff4dd2, 0 0 30px #ff007f;
+}
+/* --------------------- */
+
 /* Generate Lyrics Button */
 .generate-button {
   background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
@@ -257,6 +276,56 @@ font-size: 18px;
   100% {
     text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
   }
+}
+.title-input-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.input-label {
+  font-weight: bold;
+  color: white;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.title-input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 60%;
+  border-radius: 10px;
+  border: 2px solid #ff4dd2;
+  background-color: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 0 10px #ff4dd2;
+  text-align: center;
+}
+
+.title-input:hover {
+  box-shadow: 0 0 15px #ff4dd2, 0 0 30px #ff007f;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.toast-success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #4fffb0, #00ffc8);
+  color: black;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 0 10px #00ffc8;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
 }
 
 

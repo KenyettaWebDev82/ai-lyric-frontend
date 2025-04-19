@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
+import { getAuth } from "firebase/auth";
 import MoodSelector from "../components/MoodSelector";
 import CassetteLoader from "../components/CassetteLoader";
 
@@ -16,6 +17,8 @@ const Home = ({
   const [genre, setGenre] = useState("");
   const [singingMode, setSingingMode] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [title, setTitle] = useState("");
+  const [showSavedToast, setShowSavedToast] = useState(false);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -59,6 +62,39 @@ const Home = ({
   const resetAll = () => {
     handleStop();
     handleReset();
+  };
+
+  const handleSaveLyrics = async () => {
+    const user = getAuth().currentUser;
+    const uid = user?.uid;
+
+    if (!uid || !lyrics || !title) {
+      alert("❗ Please generate lyrics and provide a title before saving.");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3333/api/lyrics/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firebase_uid: uid,
+          title,
+          content: lyrics,
+          mood: mood,
+          genre: genre,
+        }),
+      });
+
+      const data = await res.json();
+      console.log("Saved!", data);
+      setShowSavedToast(true);
+      setTimeout(() => setShowSavedToast(false), 3000);
+    } catch (err) {
+      console.error("Error saving lyrics", err);
+    }
   };
 
   return (
@@ -107,6 +143,22 @@ const Home = ({
         >
           Generate Lyrics
         </button>
+        <div className="title-input-container">
+          <label htmlFor="title" className="input-label">
+            📝 Title of Song:
+          </label>
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="title-input"
+            placeholder="e.g., Nova Anthem"
+          />
+        </div>
+        <button onClick={handleSaveLyrics} className="save-btn">
+          Save My Lyrics
+        </button>
       </div>
 
       {loading && (
@@ -145,6 +197,9 @@ const Home = ({
             Copy
           </button>
         </div>
+      )}
+      {showSavedToast && (
+        <div className="toast-success">Your lyrics have been saved!</div>
       )}
     </div>
   );
