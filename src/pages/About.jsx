@@ -8,19 +8,19 @@ const About = () => {
         {/* About App Section */}
         <h1 className="about-title">🎧 Welcome to Nova's AI Lyric Generator 🎵</h1>
         <p className="about-text">
-          Nova’s AI Lyric Generator brings back that old-school cassette tape vibe — where music wasn’t just heard... it was *felt*. 
+          Nova’s AI Lyric Generator blends throwback cassette-era vibes with futuristic AI magic — where music isn’t just created, it’s *felt*.
         </p>
 
         <p className="about-text">
-          Inspired by the classic mixtape era, Nova uses modern AI magic to help you create custom song lyrics based on your mood and favorite music genre. Whether you're feeling hype, heartbroken, or anything in between — Nova’s got lyrics for that.
+          Inspired by the mixtape culture of the '80s and '90s, Nova helps you create personalized song lyrics that reflect your mood and favorite genre. Whether you're hyped up, heartbroken, or feeling unstoppable — Nova’s got lyrics for that.
         </p>
 
         <p className="about-text">
-          But Nova doesn’t stop there — turn on *Singing Mode* and hear your lyrics performed back to you, karaoke-style. It’s a whole vibe.
+          Want to hear it back? Flip on *Singing Mode* and let Nova deliver your lyrics karaoke-style with rhythm and flow. It’s more than songwriting — it’s a vibe.
         </p>
 
         <p className="about-text">
-          Music is personal. Nova makes sure your lyrics feel that way too. Let’s create something that's *so you*.
+          Music is personal. Your lyrics should be too. Let Nova help you write your story — one line at a time.
         </p>
 
         {/* Instructions Section */}
@@ -28,22 +28,22 @@ const About = () => {
           <h2 className="how-to-title">🚀 How to Use Nova's AI Lyric Generator</h2>
           <ul className="how-to-list">
             <li>
-              <span className="bold">1. Select a Genre:</span> Choose from Hip Hop, R&B, Pop, Country, or Rock for authentic lyric style.
+              <span className="bold">1. Select a Genre:</span> Choose from Hip Hop, R&B, Pop, Country, or Rock for an authentic style match.
             </li>
             <li>
-              <span className="bold">2. Pick Your Mood:</span> Dreamy, Romantic, Empowered, Joyful, or Melancholy — how you feel shapes your song.
+              <span className="bold">2. Pick Your Mood:</span> Dreamy, Romantic, Empowered, Joyful, or Melancholy — Nova tailors the lyrics to how you feel.
             </li>
             <li>
-              <span className="bold">3. Turn on Singing Mode (Optional):</span> Want Nova to *sing* your lyrics back? Just toggle it on!
+              <span className="bold">3. Optional: Turn on Singing Mode:</span> Let Nova *perform* your lyrics back to you, karaoke-style.
             </li>
             <li>
-              <span className="bold">4. Hit "Generate Lyrics":</span> Watch the retro cassette spin while Nova cooks up your custom song.
+              <span className="bold">4. Hit "Generate Lyrics":</span> Watch the retro cassette animation while your song is created in real time.
             </li>
             <li>
-              <span className="bold">5. Play, Copy or Reset:</span> Listen to your lyrics in karaoke style, copy them, or start over anytime.
+              <span className="bold">5. Play, Copy, or Reset:</span> Listen to it, save it, or remix it — your song, your way.
             </li>
             <li>
-              <span className="bold">6. Vibe Out:</span> Share it, sing it, or save it for later — it’s your vibe, your lyrics, your story.
+              <span className="bold">6. Save & Revisit:</span> Logged in? Save your lyrics and access them anytime under “My Lyrics.”
             </li>
           </ul>
         </div>
