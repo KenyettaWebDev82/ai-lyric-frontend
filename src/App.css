@@ -47,15 +47,47 @@
 /* --------------------- */
 /* Header Styles */
 /* --------------------- */
-.app-title {
-  font-family: "Bangers", cursive;
-  font-size: 2.5rem;
-  color: black;
-  margin-bottom: 20px;
-  letter-spacing: 1.5px;
+.welcome-text {
+  color: white;
+  text-shadow: 2px 2px 8px #ff007f, 0 0 10px #00ff85;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Adds subtle depth for readability */
 }
+
+.app-title {
+  color: black; /* or whatever it currently is */
+  text-shadow: 2px 2px 8px #00ff85, 0 0 10px #ff007f;
+  font-weight: bold;
+}
+
+/* --------------------- */
+
+.genre-dropdown {
+  width: 200px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00c6ff, #00ff85);
+  color: black;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.genre-dropdown:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+}
+
+.genre-dropdown:focus {
+  outline: none;
+  box-shadow: 0 0 15px #00ff85;
+}
+/* --------------------- */
 
 .checkbox-label {
   font-size: 1.3rem; /* Increased text size */
@@ -72,9 +104,51 @@
     0,
     0,
     0,
-    0.3
+    0.8
   ); /* Transparent dark background for readability */
   border-radius: 5px;
+}
+/* --------------------- */
+
+.singing-toggle {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-label {
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 2px 2px 8px #ff007f, 0 0 10px #00ff85;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-label input[type="checkbox"] {
+  transform: scale(1.5);
+  accent-color: #00ff85;
+}
+
+.play-button,
+.stop-button {
+  background: linear-gradient(90deg, #00c6ff, #00ff85);
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-button:hover,
+.stop-button:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
 }
 
 /* --------------------- */
@@ -109,6 +183,25 @@ button {
   gap: 8px;
 }
 
+.delete-button {
+  background: linear-gradient(to right, #ff007f, #ff4dd2); /* neon pink to lighter pink */
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff4dd2, 0 0 20px #ff007f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff4dd2, 0 0 30px #ff007f;
+}
+/* --------------------- */
+
 /* Generate Lyrics Button */
 .generate-button {
   background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
@@ -119,6 +212,18 @@ button {
   background: linear-gradient(135deg, #ff007f, #ff4d4d);
   color: white;
 }
+
+.save-btn {
+  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
+  color: black;
+  font-weight: bold;
+}
+
+.save-btn:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
+}
+/* --------------------- */
 
 /* Reset Button */
 .reset-button {
@@ -147,14 +252,98 @@ button {
 /* --------------------- */
 .lyrics-container {
   max-height: 400px;
-  width: 90%;
+  width: 55%;
   padding: 20px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   margin: 20px auto;
   overflow-y: auto;
+  
 }
+
+.lyrics-content{
+text-align: center;
+font-weight: bold;
+font-size: 18px;
+}
+
+
+
+
+.lyrics-content {
+  font-family: 'Courier New', monospace;
+  color: #fff;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.8rem;
+  white-space: pre-wrap;
+  animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 5px #00ff85, 0 0 10px #00ff85;
+  }
+  100% {
+    text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
+  }
+}
+.title-input-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.input-label {
+  color: black;
+  text-shadow: 2px 2px 8px #00ff85, 0 0 10px #ff007f;
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.title-input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 60%;
+  border-radius: 10px;
+  border: 2px solid #ff4dd2;
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 10px #ff4dd2;
+  text-align: center;
+}
+
+.title-input:hover {
+  box-shadow: 0 0 15px #ff4dd2, 0 0 30px #ff007f;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.toast-success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #4fffb0, #00ffc8);
+  color: black;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 0 10px #00ffc8;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
 
 /* Mood Background Styles */
 .lyrics-container.dreamy-bg {

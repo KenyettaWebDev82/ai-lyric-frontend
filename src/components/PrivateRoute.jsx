@@ -7,6 +7,7 @@ import { auth } from '../firebase';
 const PrivateRoute = ({ children }) => {
   const [user, setUser] = useState(undefined); // undefined = loading
   const [loading, setLoading] = useState(true);
+  const hasVisited = localStorage.getItem("hasVisited");
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
@@ -21,7 +22,15 @@ const PrivateRoute = ({ children }) => {
     return <div style={{ padding: "2rem", color: "#fff" }}>🔐 Loading...</div>;
   }
 
-  return user ? children : <Navigate to="/login" replace />;
+  if (!user) {
+    if (!hasVisited) {
+      localStorage.setItem("hasVisited", "true");
+      return <Navigate to="/register" replace />;
+    }
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;

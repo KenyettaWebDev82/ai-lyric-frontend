@@ -1,0 +1,19 @@
+.lyrics-content {
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.8rem;
+    white-space: pre-wrap;
+    animation: glowText 2s infinite alternate;
+  }
+  
+  @keyframes glowText {
+    0% {
+      text-shadow: 0 0 5px #00ff85, 0 0 10px #00ff85;
+    }
+    100% {
+      text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
+    }
+  }
+  

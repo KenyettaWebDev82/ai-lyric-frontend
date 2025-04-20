@@ -1,29 +1,26 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import PrivateRoute from "./components/PrivateRoute";
-import NavBar from "./components/NavBar";
-import MoodSelector from "./components/MoodSelector";
-import CassetteLoader from "./components/CassetteLoader";
-import Footer from "./components/Footer";
 import About from "./pages/About";
 import Features from "./pages/Features";
 import Contact from "./pages/Contact";
+import MyLyrics from "./pages/MyLyrics";
+import PrivateRoute from "./components/PrivateRoute";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import axios from "axios";
 import "./App.css";
 
-function App() {
+function AppWrapper() {
   const [mood, setMood] = useState("");
   const [lyrics, setLyrics] = useState("");
   const [loading, setLoading] = useState(false);
+  const [singingMode, setSingingMode] = useState(false);
+  const location = useLocation();
 
-  const handleSubmit = async () => {
-    if (!mood) {
-      alert("❌ Please select a mood before generating lyrics!");
-      return;
-    }
+  const handleSubmit = async (mood, genre, singingMode) => {
     try {
       setLoading(true);
       const API_URL =
@@ -32,9 +29,10 @@ function App() {
 
       const res = await axios.post(API_URL, {
         mood,
+        genre,
+        singingMode,
       });
 
-      console.log("Lyrics Response:", res.data.lyrics);
       setLyrics(res.data.lyrics);
     } catch (err) {
       console.error("❌ Error fetching lyrics:", err);
@@ -43,9 +41,7 @@ function App() {
     }
   };
 
-  const handleReset = () => {
-    window.location.reload();
-  };
+  const handleReset = () => window.location.reload();
 
   const handleCopyLyrics = () => {
     if (lyrics) {
@@ -55,16 +51,8 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       <div className="app-wrapper">
-        {/* Falling Music Notes */}
-        <div className="falling-notes">
-          {Array.from({ length: 30 }).map((_, i) => (
-            <span key={i} className="music-note">
-              {i % 3 === 0 ? "🎵" : i % 3 === 1 ? "🎶" : "🎧"}
-            </span>
-          ))}
-        </div>
         <NavBar />
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -73,26 +61,49 @@ function App() {
             path="/"
             element={
               <PrivateRoute>
-              <Home
-                mood={mood}
-                setMood={setMood}
-                lyrics={lyrics}
-                loading={loading}
-                handleSubmit={handleSubmit}
-                handleReset={handleReset}
-                handleCopyLyrics={handleCopyLyrics}
-              />
+                <Home
+                  mood={mood}
+                  setMood={setMood}
+                  lyrics={lyrics}
+                  loading={loading}
+                  handleSubmit={handleSubmit}
+                  handleReset={handleReset}
+                  handleCopyLyrics={handleCopyLyrics}
+                  singingMode={singingMode}
+                  setSingingMode={setSingingMode}
+                />
               </PrivateRoute>
             }
           />
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Features />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/mylyrics" element={<MyLyrics />} />
         </Routes>
         <Footer />
       </div>
-    </Router>
+
+      {location.pathname === "/mylyrics" && (
+        <div className="falling-notes">
+          {[...Array(15)].map((_, i) => {
+            const icons = ["🎵", "🎶", "🎧"];
+            const randomIcon = icons[i % icons.length];
+            return (
+              <div key={i} className="music-note">
+                {randomIcon}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AppWrapper />
+    </Router>
+  );
+}

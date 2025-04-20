@@ -1,51 +1,54 @@
-/* Contact.css - Nova's Contact Page Styles */
+/* Contact.css - Matched to Features.css */
+
 .contact-container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 800px;
-    margin: 30px auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    text-align: center;
-  }
-  
-  .contact-title {
-    font-size: 2rem;
-    color: #4b0082;
-    margin-bottom: 20px;
-  }
-  
-  .contact-text {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    line-height: 1.5;
-    color: #333;
-  }
-  
-  /* Contact Link Styles */
-  .contact-info {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .contact-link {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #ff4d4d;
-    transition: color 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .contact-link:hover {
-    color: #4b0082;
-  }
-  
-  /* Icon Styles */
-  .contact-icon {
-    font-size: 1.5rem;
-  }
-  
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 30px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2rem;
+  color: #4b0082;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.contact-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: #333;
+  padding-left: 0;
+  list-style: none;
+  font-weight: 600;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.contact-link {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #ff4d4d;
+  transition: color 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.contact-link:hover {
+  color: #4b0082;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+}
