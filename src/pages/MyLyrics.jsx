@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "./MyLyrics.css"
+import "./MyLyrics.css";
+
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function MyLyrics() {
   const [savedLyrics, setSavedLyrics] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,12 +20,12 @@ function MyLyrics() {
       console.log("👤 Firebase UID:", uid);
 
       try {
-        const res = await fetch(`http://localhost:3333/api/lyrics/user/${uid}`);
+        const res = await fetch(`${BASE_URL}/api/lyrics/user/${uid}`);
         if (!res.ok) {
           throw new Error("Failed to fetch lyrics");
         }
         const data = await res.json();
-        console.log("📄 Data received from backend:", data); // Add this
+        console.log("📄 Data received from backend:", data);
         setSavedLyrics(data);
       } catch (err) {
         console.error("Error fetching lyrics:", err);
@@ -42,7 +44,7 @@ function MyLyrics() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3333/api/lyrics/${id}`, {
+      const res = await fetch(`${BASE_URL}/api/lyrics/${id}`, {
         method: "DELETE",
       });
 
@@ -80,7 +82,7 @@ function MyLyrics() {
         className="back-button"
         onClick={() => {
           navigate("/");
-          window.location.reload(); // optional: forces new lyrics generation state
+          window.location.reload();
         }}
       >
         Back to Lyrics Generator
