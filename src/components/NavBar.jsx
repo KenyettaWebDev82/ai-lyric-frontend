@@ -1,12 +1,12 @@
-import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import "./NavBar.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const NavBar = () => {
     }
   };
 
-  const location = useLocation();
+  // ✅ Hide navbar on Register page
   if (location.pathname === "/register") return null;
 
   return (

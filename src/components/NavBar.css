@@ -16,7 +16,6 @@
   flex-wrap: wrap;
 }
 
-
 /* NavLink Styles */
 .nav-link {
   font-size: 1.2rem;
@@ -40,6 +39,11 @@
   border-bottom: 2px solid #ff007f;
 }
 
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
 
 .logout-wrapper {
   display: flex;
@@ -66,10 +70,8 @@
 
   background: linear-gradient(90deg, #00c6ff, #00ff85);
   color: black;
-
-  margin-top: 16px; 
+  margin-top: 16px;
 }
-
 
 @media (max-width: 768px) {
   .navbar {

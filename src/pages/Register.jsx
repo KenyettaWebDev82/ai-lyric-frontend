@@ -1,4 +1,3 @@
-// src/pages/Register.jsx
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import {
@@ -21,14 +20,13 @@ const Register = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (error) {
-        if (error.code === 'auth/email-already-in-use') {
-          setMessage('❌ Email already in use. Redirecting to login...');
-          setTimeout(() => navigate('/login'), 2000);
-        } else {
-          setMessage(`❌ Registration failed: ${error.message}`);
-        }
+      if (error.code === "auth/email-already-in-use") {
+        setMessage("❌ Email already in use. Redirecting to login...");
+        setTimeout(() => navigate("/login"), 2000);
+      } else {
+        setMessage(`❌ Registration failed: ${error.message}`);
       }
-      
+    }
   };
 
   const handleGoogleRegister = async () => {

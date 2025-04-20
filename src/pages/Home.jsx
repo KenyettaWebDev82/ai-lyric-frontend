@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import { getAuth } from "firebase/auth";
@@ -39,19 +40,19 @@ const Home = ({
       }
 
       const utterance = new SpeechSynthesisUtterance(lines[index]);
-      utterance.rate = 0.85; // slower = smoother vibe
-      utterance.pitch = 1.1 + Math.random() * 0.2; // random pitch variation
+      utterance.rate = 0.85;
+      utterance.pitch = 1.1 + Math.random() * 0.2;
       utterance.volume = 1;
 
       utterance.onend = () => {
-        setTimeout(() => speakLine(index + 1), 300); // pause between lines
+        setTimeout(() => speakLine(index + 1), 300);
       };
 
       speechSynthesis.speak(utterance);
     };
 
     setIsSpeaking(true);
-    speakLine(0); // start singing line by line
+    speakLine(0);
   };
 
   const handleStop = () => {
@@ -143,6 +144,7 @@ const Home = ({
         >
           Generate Lyrics
         </button>
+
         <div className="title-input-container">
           <label htmlFor="title" className="input-label">
             📝 Title of Song
@@ -156,6 +158,7 @@ const Home = ({
             placeholder="e.g., Nova Anthem"
           />
         </div>
+
         <button onClick={handleSaveLyrics} className="save-btn">
           Save My Lyrics
         </button>
@@ -198,6 +201,7 @@ const Home = ({
           </button>
         </div>
       )}
+
       {showSavedToast && (
         <div className="toast-success">Your lyrics have been saved!</div>
       )}

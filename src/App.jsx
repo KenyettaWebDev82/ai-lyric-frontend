@@ -7,7 +7,6 @@ import About from "./pages/About";
 import Features from "./pages/Features";
 import Contact from "./pages/Contact";
 import MyLyrics from "./pages/MyLyrics";
-
 import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -19,7 +18,7 @@ function AppWrapper() {
   const [lyrics, setLyrics] = useState("");
   const [loading, setLoading] = useState(false);
   const [singingMode, setSingingMode] = useState(false);
-  const location = useLocation(); // ✅ Add this to detect route
+  const location = useLocation();
 
   const handleSubmit = async (mood, genre, singingMode) => {
     try {
@@ -84,7 +83,6 @@ function AppWrapper() {
         <Footer />
       </div>
 
-      {/* ✅ Show falling notes ONLY on /mylyrics */}
       {location.pathname === "/mylyrics" && (
         <div className="falling-notes">
           {[...Array(15)].map((_, i) => {

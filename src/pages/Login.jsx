@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -46,14 +50,28 @@ const Login = () => {
           <h2 className="graffiti-title">Login to Nova</h2>
 
           <label>Email</label>
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           <label>Password</label>
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           <button type="submit">Login</button>
 
-          <button type="button" onClick={handleGoogleSignIn}>Sign in with Google</button>
+          <button type="button" onClick={handleGoogleSignIn}>
+            Sign in with Google
+          </button>
 
           <p className="graffiti-message">{message}</p>
         </form>
