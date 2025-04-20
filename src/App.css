@@ -322,7 +322,7 @@ font-size: 18px;
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.toast-success {
+/* .toast-success {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -335,7 +335,21 @@ font-size: 18px;
   box-shadow: 0 0 10px #00ffc8;
   z-index: 9999;
   animation: fadeInOut 3s ease-in-out forwards;
+} */
+
+.toast-success {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
+
 
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateY(-20px); }

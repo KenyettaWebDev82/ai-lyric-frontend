@@ -68,12 +68,12 @@ const Home = ({
   const handleSaveLyrics = async () => {
     const user = getAuth().currentUser;
     const uid = user?.uid;
-
+  
     if (!uid || !lyrics || !title) {
       alert("❗ Please generate lyrics and provide a title before saving.");
       return;
     }
-
+  
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lyrics/save`, {
         method: "POST",
@@ -84,19 +84,24 @@ const Home = ({
           firebase_uid: uid,
           title,
           content: lyrics,
-          mood: mood,
-          genre: genre,
+          mood,
+          genre,
         }),
       });
-
+  
+      // 👇 Ensure we read the JSON response
+      if (!res.ok) throw new Error("Failed to save lyrics");
       const data = await res.json();
-      console.log("Saved!", data);
+  
+      console.log("✅ Saved!", data);
       setShowSavedToast(true);
       setTimeout(() => setShowSavedToast(false), 3000);
     } catch (err) {
-      console.error("Error saving lyrics", err);
+      console.error("❌ Error saving lyrics", err);
+      alert("Failed to save lyrics. Check the console or network tab for more.");
     }
   };
+  
 
   return (
     <div className="app-container">
