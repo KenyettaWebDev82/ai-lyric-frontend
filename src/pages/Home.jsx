@@ -75,7 +75,7 @@ const Home = ({
     }
   
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lyrics/save`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
