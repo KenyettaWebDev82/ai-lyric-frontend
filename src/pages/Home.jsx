@@ -30,7 +30,6 @@ const Home = ({
 
   const handlePlay = () => {
     if (!lyrics) return;
-
     const lines = lyrics.split("\n").filter((line) => line.trim() !== "");
 
     const speakLine = (index) => {
@@ -43,11 +42,9 @@ const Home = ({
       utterance.rate = 0.85;
       utterance.pitch = 1.1 + Math.random() * 0.2;
       utterance.volume = 1;
-
       utterance.onend = () => {
         setTimeout(() => speakLine(index + 1), 300);
       };
-
       speechSynthesis.speak(utterance);
     };
 
@@ -75,23 +72,24 @@ const Home = ({
     }
 
     try {
-      // STEP 1: Register the user first, and CHECK if successful
-      const registerRes = await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firebase_uid: uid,
-          email: user.email,
-        }),
-      });
+      // Step 1: Register the user
+      const registerRes = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firebase_uid: uid,
+            email: user.email,
+          }),
+        }
+      );
 
-      if (!registerRes.ok) {
-        throw new Error("Failed to register user");
-      }
+      if (!registerRes.ok) throw new Error("Failed to register user");
 
-      // STEP 2: Save the lyrics only AFTER registration is confirmed
+      // Step 2: Save the lyrics
       const res = await fetch(`${import.meta.env.VITE_API_URL}/save`, {
         method: "POST",
         headers: {
@@ -117,7 +115,6 @@ const Home = ({
       alert("Failed to save lyrics. Check the console or network tab for more.");
     }
   };
-
 
   return (
     <div className="app-container">
