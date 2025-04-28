@@ -74,7 +74,7 @@ const Home = ({
     try {
       // Step 1: Register the user
       const registerRes = await fetch(
-        `${import.meta.env.VITE_API_URL}/users/register`,
+        `${import.meta.env.VITE_API_URL}/api/users/register`,
         {
           method: "POST",
           headers: {
