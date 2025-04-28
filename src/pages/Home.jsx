@@ -68,25 +68,30 @@ const Home = ({
   const handleSaveLyrics = async () => {
     const user = getAuth().currentUser;
     const uid = user?.uid;
-  
+
     if (!uid || !lyrics || !title) {
       alert("❗ Please generate lyrics and provide a title before saving.");
       return;
     }
-  
-    // STEP 1: Register the user first
-await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    firebase_uid: uid,
-    email: user.email,
-  }),
-});
 
     try {
+      // STEP 1: Register the user first, and CHECK if successful
+      const registerRes = await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firebase_uid: uid,
+          email: user.email,
+        }),
+      });
+
+      if (!registerRes.ok) {
+        throw new Error("Failed to register user");
+      }
+
+      // STEP 2: Save the lyrics only AFTER registration is confirmed
       const res = await fetch(`${import.meta.env.VITE_API_URL}/save`, {
         method: "POST",
         headers: {
@@ -100,11 +105,10 @@ await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
           genre,
         }),
       });
-  
-      // 👇 Ensure we read the JSON response
+
       if (!res.ok) throw new Error("Failed to save lyrics");
       const data = await res.json();
-  
+
       console.log("✅ Saved!", data);
       setShowSavedToast(true);
       setTimeout(() => setShowSavedToast(false), 3000);
@@ -113,7 +117,7 @@ await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
       alert("Failed to save lyrics. Check the console or network tab for more.");
     }
   };
-  
+
 
   return (
     <div className="app-container">
