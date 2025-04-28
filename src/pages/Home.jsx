@@ -74,6 +74,18 @@ const Home = ({
       return;
     }
   
+    // STEP 1: Register the user first
+await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    firebase_uid: uid,
+    email: user.email,
+  }),
+});
+
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/save`, {
         method: "POST",
