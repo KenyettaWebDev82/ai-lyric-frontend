@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -23,9 +28,12 @@ function AppWrapper() {
   const handleSubmit = async (mood, genre, singingMode) => {
     try {
       setLoading(true);
-      const API_URL =
-        import.meta.env.VITE_API_URL ||
-        "https://ai-lyric-backend.onrender.com/api/lyrics";
+      const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3333";
+      const API_URL = `${BASE_URL}/api/lyrics`;
+
+      // const API_URL =
+      //   import.meta.env.VITE_API_URL || "http://localhost:3333/api/lyrics";
+      // "https://ai-lyric-backend.onrender.com/api/lyrics";
 
       const res = await axios.post(API_URL, {
         mood,

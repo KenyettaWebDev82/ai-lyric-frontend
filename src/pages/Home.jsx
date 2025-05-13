@@ -89,8 +89,8 @@ const Home = ({
 
       if (!registerRes.ok) throw new Error("Failed to register user");
 
-      // Step 2: Save the lyrics
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/save`, {
+      // Step 2: Save the lyrics - UGHHHHH deployment path FAILS!
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lyrics/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
