@@ -28,18 +28,15 @@ function AppWrapper() {
   const handleSubmit = async (mood, genre, singingMode) => {
     try {
       setLoading(true);
-      const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3333";
+      const BASE_URL = import.meta.env.VITE_API_URL;
       const API_URL = `${BASE_URL}/api/lyrics`;
-
-      // const API_URL =
-      //   import.meta.env.VITE_API_URL || "http://localhost:3333/api/lyrics";
-      // "https://ai-lyric-backend.onrender.com/api/lyrics";
-
+      
       const res = await axios.post(API_URL, {
-        mood,
-        genre,
-        singingMode,
+          mood,
+          genre,
+          singingMode,
       });
+      
 
       setLyrics(res.data.lyrics);
     } catch (err) {
