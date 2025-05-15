@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  VITE_API_URL = "https://ai-lyric-backend.onrender.com/api/lyrics"
+  VITE_API_URL = "https://ai-lyric-backend.onrender.com"
 
 [[redirects]]
   from = "/*"
