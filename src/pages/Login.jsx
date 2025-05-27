@@ -18,10 +18,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setMessage(`✅ Logged in as: ${userCredential.user.email}`);
+      setMessage(`Logged in as: ${userCredential.user.email}`);
       navigate('/');
     } catch (error) {
-      setMessage(`❌ Login failed: ${error.message}`);
+      setMessage(`Login failed: ${error.message}`);
     }
   };
 

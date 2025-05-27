@@ -21,10 +21,10 @@ const Register = () => {
       navigate("/");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        setMessage("❌ Email already in use. Redirecting to login...");
+        setMessage("Email already in use. Redirecting to login...");
         setTimeout(() => navigate("/login"), 2000);
       } else {
-        setMessage(`❌ Registration failed: ${error.message}`);
+        setMessage(`Registration failed: ${error.message}`);
       }
     }
   };
@@ -35,7 +35,7 @@ const Register = () => {
       await signInWithPopup(auth, provider);
       navigate("/");
     } catch (error) {
-      setMessage(`❌ Google Sign Up failed: ${error.message}`);
+      setMessage(`Google Sign Up failed: ${error.message}`);
     }
   };
 

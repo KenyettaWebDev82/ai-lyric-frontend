@@ -16,10 +16,6 @@ const About = () => {
         </p>
 
         <p className="about-text">
-          Want to hear it back? Flip on *Singing Mode* and let Nova deliver your lyrics karaoke-style with rhythm and flow. It’s more than songwriting — it’s a vibe.
-        </p>
-
-        <p className="about-text">
           Music is personal. Your lyrics should be too. Let Nova help you write your story — one line at a time.
         </p>
 
@@ -34,16 +30,13 @@ const About = () => {
               <span className="bold">2. Pick Your Mood:</span> Dreamy, Romantic, Empowered, Joyful, or Melancholy — Nova tailors the lyrics to how you feel.
             </li>
             <li>
-              <span className="bold">3. Optional: Turn on Singing Mode:</span> Let Nova *perform* your lyrics back to you, karaoke-style.
+              <span className="bold">3. Hit "Generate Lyrics":</span> Watch the retro cassette animation while your song is created in real time.
             </li>
             <li>
-              <span className="bold">4. Hit "Generate Lyrics":</span> Watch the retro cassette animation while your song is created in real time.
+              <span className="bold">4. Copy and Reset:</span> Save it, or remix it — your song, your way.
             </li>
             <li>
-              <span className="bold">5. Play, Copy, or Reset:</span> Listen to it, save it, or remix it — your song, your way.
-            </li>
-            <li>
-              <span className="bold">6. Save & Revisit:</span> Logged in? Save your lyrics and access them anytime under “My Lyrics.”
+              <span className="bold">5. Save & Revisit:</span> Logged in? Save your lyrics and access them anytime under “My Lyrics.”
             </li>
           </ul>
         </div>

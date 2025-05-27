@@ -13,7 +13,7 @@
     display: flex;
     width: 400%;
     height: 100%;
-    animation: trainSlide 15s linear infinite;
+    animation: trainSlide 11s linear infinite;
     z-index: 0;
   }
   
@@ -45,7 +45,7 @@
     padding: 2rem;
     width: 350px;
     color: #fff;
-    font-family: "Bangers", cursive;
+    font-family: Arial, Helvetica, sans-serif;
     box-shadow: 
       0 0 10px #ff007f,
       0 0 20px rgba(255, 255, 255, 0.3),
@@ -61,14 +61,13 @@
   .graffiti-title {
     font-size: 2.5rem;
     color: #ff007f;
-    text-shadow: 2px 2px 8px #00ff85;
     margin-bottom: 1rem;
   }
   
   /* Label Styling */
   .graffiti-login-form label {
     color: white;
-    font-family: "Bangers", cursive;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5rem;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
   }
@@ -92,9 +91,8 @@
     border: 2px solid white;
     animation: pulseInput 1.5s infinite alternate;
     display: block;
-    margin: 0 auto 1.5rem auto;  /* 👈 Adds space BELOW only */
-
-    box-sizing: border-box;  /* prevents overflow */
+    margin: 0 auto 1.5rem auto;  
+    box-sizing: border-box;  
   }
   
   

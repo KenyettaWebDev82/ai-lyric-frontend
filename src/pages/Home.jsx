@@ -1,26 +1,30 @@
 // src/pages/Home.jsx
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
-import { getAuth } from "firebase/auth";
 import MoodSelector from "../components/MoodSelector";
 import CassetteLoader from "../components/CassetteLoader";
+import "./Home.css";
 
 const Home = ({
   mood,
   setMood,
   lyrics,
+  genre,
+  setGenre,
   loading,
   handleSubmit,
+  handleSave,
+  showSavedToast,
+  errorMessage,
+  setErrorMessage, 
   handleReset,
   handleCopyLyrics,
+  title,
+  setTitle,
 }) => {
-  const [displayName, setDisplayName] = useState("");
-  const [genre, setGenre] = useState("");
-  const [singingMode, setSingingMode] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [title, setTitle] = useState("");
-  const [showSavedToast, setShowSavedToast] = useState(false);
+  const [displayName, setDisplayName] = useState("");        // User name or email
 
+  // On mount, get user display name from Firebase auth
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
@@ -28,198 +32,90 @@ const Home = ({
     }
   }, []);
 
-  const handlePlay = () => {
-    if (!lyrics) return;
-    const lines = lyrics.split("\n").filter((line) => line.trim() !== "");
-
-    const speakLine = (index) => {
-      if (index >= lines.length) {
-        setIsSpeaking(false);
-        return;
-      }
-
-      const utterance = new SpeechSynthesisUtterance(lines[index]);
-      utterance.rate = 0.85;
-      utterance.pitch = 1.1 + Math.random() * 0.2;
-      utterance.volume = 1;
-      utterance.onend = () => {
-        setTimeout(() => speakLine(index + 1), 300);
-      };
-      speechSynthesis.speak(utterance);
-    };
-
-    setIsSpeaking(true);
-    speakLine(0);
-  };
-
-  const handleStop = () => {
-    speechSynthesis.cancel();
-    setIsSpeaking(false);
-  };
-
-  const resetAll = () => {
-    handleStop();
-    handleReset();
-  };
-
-  const handleSaveLyrics = async () => {
-    const user = getAuth().currentUser;
-    const uid = user?.uid;
-
-    if (!uid || !lyrics || !title) {
-      alert("❗ Please generate lyrics and provide a title before saving.");
+  // Called when user clicks "Generate Lyrics"
+  const handleGenerate = async () => {
+    if (!genre || !mood) {
+      setErrorMessage("Please select a genre and mood before generating lyrics.");
+      setTimeout(() => setErrorMessage(""), 3000);
       return;
     }
-
-    try {
-      // Step 1: Register the user
-      const registerRes = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firebase_uid: uid,
-            email: user.email,
-          }),
-        }
-      );
-
-      if (!registerRes.ok) throw new Error("Failed to register user");
-
-      // Step 2: Save the lyrics - UGHHHHH deployment path FAILS!
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lyrics/save`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firebase_uid: uid,
-          title,
-          content: lyrics,
-          mood,
-          genre,
-        }),
-      });
-
-      if (!res.ok) throw new Error("Failed to save lyrics");
-      const data = await res.json();
-
-      console.log("✅ Saved!", data);
-      setShowSavedToast(true);
-      setTimeout(() => setShowSavedToast(false), 3000);
-    } catch (err) {
-      console.error("❌ Error saving lyrics", err);
-      alert("Failed to save lyrics. Check the console or network tab for more.");
-    }
+    setErrorMessage("");
+    await handleSubmit(mood, genre);
   };
 
+  
   return (
-    <div className="app-container">
-      <h2 className="welcome-text">🎧 Welcome, {displayName}!</h2>
-      <h1 className="app-title">Nova's AI Lyric Generator</h1>
-
-      <h3>🎤 Select a Genre:</h3>
-      <select
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
-        className="genre-dropdown"
-      >
-        <option value="">-- Select Genre --</option>
-        <option value="Hip Hop">Hip Hop</option>
-        <option value="R&B">R&B</option>
-        <option value="Country">Country</option>
-        <option value="Pop">Pop</option>
-        <option value="Rock">Rock</option>
-      </select>
-
-      <MoodSelector selectedMood={mood} onMoodChange={setMood} />
-
-      <div className="singing-toggle">
-        <label className="toggle-label">
-          <input
-            type="checkbox"
-            checked={singingMode}
-            onChange={() => setSingingMode(!singingMode)}
-          />
-          Singing Mode (Melody-Friendly Lyrics)
-        </label>
+    <div className="home-container">
+      {/* Welcome header */}
+      <div className="header-left">
+        <p className="welcome-text">Welcome, {displayName}!</p>
+        <h1 className="nova-title">Nova AI</h1>
       </div>
 
-      <div className="button-container">
-        <button
-          className="generate-button"
-          onClick={async () => {
-            if (!mood || !genre) {
-              alert("❌ Please select a mood and genre!");
-              return;
-            }
-            await handleSubmit(mood, genre, singingMode);
-          }}
-          disabled={!mood || !genre}
+      {/* Title + Genre Inputs */}
+      <div className="form-block">
+        <input
+          type="text"
+          placeholder="Title of Song"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="title-input"
+        />
+
+        <select
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+          className="genre-dropdown primary-button"
         >
+          <option value="">Select Genre</option>
+          <option value="Hip Hop">Hip Hop</option>
+          <option value="R&B">R&B</option>
+          <option value="Country">Country</option>
+          <option value="Pop">Pop</option>
+          <option value="Rock">Rock</option>
+        </select>
+      </div>
+
+      {/* Mood Selector */}
+      <div className="mood-section">
+        <h3 className="mood-label">Choose a Mood:</h3>
+        <MoodSelector selectedMood={mood} onMoodChange={setMood} />
+      </div>
+
+      {/* Error Toast */}
+      {errorMessage && <div className="toast-error">{errorMessage}</div>}
+
+      {/* Main Action Buttons */}
+      <div className="button-group">
+        <button className="primary-button" onClick={handleGenerate}>
           Generate Lyrics
         </button>
 
-        <div className="title-input-container">
-          <label htmlFor="title" className="input-label">
-            📝 Title of Song
-          </label>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="title-input"
-            placeholder="e.g., Nova Anthem"
-          />
-        </div>
-
-        <button onClick={handleSaveLyrics} className="save-btn">
+        <button className="primary-button" onClick={handleSave}>
           Save My Lyrics
         </button>
       </div>
 
-      {loading && (
-        <div className="cassette-loader-container">
-          <CassetteLoader />
-        </div>
-      )}
+      {/* Loader while waiting for lyrics */}
+      {loading && <CassetteLoader />}
 
+      {/* Display Generated Lyrics */}
       {!loading && lyrics && (
-        <div className={`lyrics-container ${mood}-bg`}>
-          <h3 className="lyrics-title">🎤 Your Lyrics:</h3>
-          <pre className="lyrics-content">{lyrics}</pre>
-
-          {singingMode && (
-            <div className="button-container">
-              {!isSpeaking ? (
-                <button className="play-button" onClick={handlePlay}>
-                  ▶️ Play
-                </button>
-              ) : (
-                <button className="stop-button" onClick={handleStop}>
-                  ⏹ Stop
-                </button>
-              )}
-            </div>
-          )}
+        <div className="lyrics-output">
+          <h3 className="lyrics-title">{title || "Your Lyrics:"}</h3>
+          <pre>{lyrics}</pre>
+          <div className="button-group">
+            <button className="primary-button" onClick={handleCopyLyrics}>
+              Copy
+            </button>
+            <button className="primary-button" onClick={handleReset}>
+              Reset
+            </button>
+          </div>
         </div>
       )}
 
-      {!loading && lyrics && (
-        <div className="button-container">
-          <button onClick={resetAll} className="reset-button">
-            Reset
-          </button>
-          <button onClick={handleCopyLyrics} className="copy-button">
-            Copy
-          </button>
-        </div>
-      )}
-
+      {/* Save Toast */}
       {showSavedToast && (
         <div className="toast-success">Your lyrics have been saved!</div>
       )}

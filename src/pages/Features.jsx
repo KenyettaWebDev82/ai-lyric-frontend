@@ -20,12 +20,6 @@ const Features = () => {
           </li>
 
           <li>
-            <span>🎙️</span>{" "}
-            <strong className="feature-title">Singing Mode (Karaoke Vibes):</strong>
-            Let Nova *sing* your lyrics out loud using AI-powered rhythm and pitch variation for each line.
-          </li>
-
-          <li>
             <span>💾</span>{" "}
             <strong className="feature-title">Save My Lyrics:</strong>
             Login to save your custom lyrics with a unique title and revisit them anytime.

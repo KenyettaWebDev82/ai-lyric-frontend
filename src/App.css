@@ -2,39 +2,31 @@
 /* Base Styles - Background & Global */
 /* --------------------- */
 
-/* --------------------- */
 /* App Wrapper - Push Footer Down */
-/* --------------------- */
-/* Wrapper to fix layout */
 .app-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Push footer to the bottom */
+  min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
 }
 
-/* App Content */
-/* --------------------- */
 /* App Container - Stretch Background */
-/* --------------------- */
-.app-container {
-  flex: 1; /* Fills available space between Navbar and Footer */
+/* .app-container {
+  flex: 1;
   padding: 20px;
   background: url("/vibe2.webp") no-repeat center top -80px;
-  background-size: cover; /* <-- Change from contain to cover */
+  background-size: cover;
   background-attachment: fixed;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  width: 100vw; /* Ensure it stretches fully */
-  max-width: 100vw; /* Optional: Keep max-width for control */
+  width: 100vw;
+  max-width: 100vw;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-}
+} */
 
-/* --------------------- */
-/* NavBar - Full Width */
-/* --------------------- */
+/* NavBar */
 .navbar {
   width: 100%;
   background: linear-gradient(90deg, #ff007f, #ff4d4d, #ff7300);
@@ -44,23 +36,14 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* --------------------- */
-/* Header Styles */
-/* --------------------- */
-.welcome-text {
-  color: white;
-  text-shadow: 2px 2px 8px #ff007f, 0 0 10px #00ff85;
-  font-weight: bold;
-}
-
+/* App Titles */
 .app-title {
-  color: black; /* or whatever it currently is */
+  color: black;
   text-shadow: 2px 2px 8px #00ff85, 0 0 10px #ff007f;
   font-weight: bold;
 }
 
-/* --------------------- */
-
+/* Input Styling */
 .genre-dropdown {
   width: 200px;
   padding: 12px 16px;
@@ -87,34 +70,26 @@
   outline: none;
   box-shadow: 0 0 15px #00ff85;
 }
-/* --------------------- */
 
+/* Mood Label Styles */
 .checkbox-label {
-  font-size: 1.3rem; /* Increased text size */
-  color: #ffffff; /* Pure white for brightness */
-  font-weight: 600; /* Slightly bold for better visibility */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Stronger shadow for contrast */
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   cursor: pointer;
-  padding: 5px 10px; /* Adds spacing around labels for clarity */
+  padding: 5px 10px;
   margin-right: 10px;
-}
-
-.checkbox-label {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Transparent dark background for readability */
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
 }
-/* --------------------- */
 
-.singing-toggle {
+/* Singing Toggle */
+/* .singing-toggle {
   margin: 15px 0;
   display: flex;
   justify-content: center;
-}
+} */
 
 .toggle-label {
   font-size: 1.2rem;
@@ -131,40 +106,7 @@
   accent-color: #00ff85;
 }
 
-.play-button,
-.stop-button {
-  background: linear-gradient(90deg, #00c6ff, #00ff85);
-  color: black;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  margin-top: 0.5rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.play-button:hover,
-.stop-button:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: white;
-}
-
-/* --------------------- */
-/* Button Container */
-/* --------------------- */
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-  align-items: center;
-}
-
-/* --------------------- */
-/* Universal Button Styles */
-/* --------------------- */
+/* Universal Buttons */
 button {
   width: 150px;
   height: 60px;
@@ -183,16 +125,29 @@ button {
   gap: 8px;
 }
 
+.generate-button,
+.save-btn,
+.reset-button,
+.copy-button {
+  background: linear-gradient(90deg, #00c6ff, #00ff85);
+  color: black;
+}
+
+.generate-button:hover,
+.save-btn:hover,
+.reset-button:hover,
+.copy-button:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
+}
+
 .delete-button {
-  background: linear-gradient(to right, #ff007f, #ff4dd2); /* neon pink to lighter pink */
+  background: linear-gradient(to right, #ff007f, #ff4dd2);
   color: white;
   font-weight: bold;
   padding: 8px 14px;
-  border: none;
   border-radius: 12px;
   box-shadow: 0 0 10px #ff4dd2, 0 0 20px #ff007f;
-  cursor: pointer;
-  transition: all 0.3s ease;
   margin-top: 10px;
 }
 
@@ -200,56 +155,8 @@ button {
   transform: scale(1.05);
   box-shadow: 0 0 15px #ff4dd2, 0 0 30px #ff007f;
 }
-/* --------------------- */
 
-/* Generate Lyrics Button */
-.generate-button {
-  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: black;
-}
-
-.generate-button:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: white;
-}
-
-.save-btn {
-  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: black;
-  font-weight: bold;
-}
-
-.save-btn:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: white;
-}
-/* --------------------- */
-
-/* Reset Button */
-.reset-button {
-  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: black;
-}
-
-.reset-button:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: white;
-}
-
-/* Copy Button */
-.copy-button {
-  background: linear-gradient(90deg, #00c6ff, #00ff85); /* Blue to Green */
-  color: black;
-}
-
-.copy-button:hover {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: white;
-}
-
-/* --------------------- */
-/* Lyrics Container */
-/* --------------------- */
+/* Lyrics Output */
 .lyrics-container {
   max-height: 400px;
   width: 55%;
@@ -259,17 +166,7 @@ button {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   margin: 20px auto;
   overflow-y: auto;
-  
 }
-
-.lyrics-content{
-text-align: center;
-font-weight: bold;
-font-size: 18px;
-}
-
-
-
 
 .lyrics-content {
   font-family: 'Courier New', monospace;
@@ -282,13 +179,11 @@ font-size: 18px;
 }
 
 @keyframes glowText {
-  0% {
-    text-shadow: 0 0 5px #00ff85, 0 0 10px #00ff85;
-  }
-  100% {
-    text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f;
-  }
+  0% { text-shadow: 0 0 5px #00ff85, 0 0 10px #00ff85; }
+  100% { text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f; }
 }
+
+/* Title Input */
 .title-input-container {
   margin: 20px 0;
   text-align: center;
@@ -296,14 +191,12 @@ font-size: 18px;
 
 .input-label {
   color: black;
-  text-shadow: 2px 2px 8px #00ff85, 0 0 10px #ff007f;
   font-weight: bold;
   font-size: 2rem;
   font-family: "Poppins", sans-serif;
   text-align: center;
   margin-bottom: 10px;
 }
-
 
 .title-input {
   padding: 10px;
@@ -322,21 +215,7 @@ font-size: 18px;
   transition: box-shadow 0.3s ease-in-out;
 }
 
-/* .toast-success {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: linear-gradient(to right, #4fffb0, #00ffc8);
-  color: black;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 0 10px #00ffc8;
-  z-index: 9999;
-  animation: fadeInOut 3s ease-in-out forwards;
-} */
-
+/* Toast Success Message */
 .toast-success {
   background-color: #4caf50;
   color: white;
@@ -350,49 +229,7 @@ font-size: 18px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(-20px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-20px); }
-}
-
-
-/* Mood Background Styles */
-.lyrics-container.dreamy-bg {
-  background: linear-gradient(135deg, #8e44ad, #3498db);
-  color: #fff;
-}
-
-.lyrics-container.romantic-bg {
-  background: linear-gradient(135deg, #ff007f, #ff4d4d);
-  color: #fff;
-}
-
-.lyrics-container.melancholy-bg {
-  background: linear-gradient(135deg, #2c3e50, #4b0082);
-  color: #fff;
-}
-
-.lyrics-container.joyful-bg {
-  background: linear-gradient(135deg, #ff7300, #ffeb3b);
-  color: #333;
-}
-
-.lyrics-container.empowered-bg {
-  background: linear-gradient(135deg, #ff1493, #4b0082);
-  color: #fff;
-}
-
-.lyrics-container.default-bg {
-  background: linear-gradient(to right, #e0eafc, #cfdef3);
-  color: #333;
-}
-
-/* --------------------- */
-/* Footer Styles - Fixed Bottom */
-/* --------------------- */
+/* Footer */
 .footer {
   background: linear-gradient(90deg, #4b0082, #ff1493);
   color: #fff;
@@ -404,33 +241,23 @@ font-size: 18px;
   bottom: 0;
 }
 
-/* --------------------- */
-/* Falling Music Notes Animation */
-/* --------------------- */
+/* Falling Notes */
 @keyframes fall {
-  0% {
-    transform: translateY(-10%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
+  0% { transform: translateY(-10%); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* Music note styles */
 .music-note {
   position: fixed;
   top: -10%;
   font-size: 50px;
-  color: #ff4d4d; /* Make them colorful! */
+  color: #ff4d4d;
   opacity: 0.6;
-  pointer-events: none; /* Ensure notes don't block clicks */
+  pointer-events: none;
   animation: fall linear infinite;
-  z-index: 0; /* Keep behind everything */
+  z-index: 0;
 }
 
-/* Container for falling notes */
 .falling-notes {
   position: fixed;
   top: 0;
@@ -439,71 +266,74 @@ font-size: 18px;
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0; /* Set z-index so it's behind the NavBar */
+  z-index: 0;
 }
 
-/* Different animation delays and speeds for variety */
-.music-note:nth-child(1) {
-  left: 5%;
-  animation-duration: 6s;
-  animation-delay: 0s;
-}
-.music-note:nth-child(2) {
-  left: 15%;
-  animation-duration: 5s;
-  animation-delay: 1s;
-}
-.music-note:nth-child(3) {
-  left: 25%;
-  animation-duration: 7s;
-  animation-delay: 2s;
-}
-.music-note:nth-child(4) {
-  left: 35%;
-  animation-duration: 5.5s;
-  animation-delay: 1.5s;
-}
-.music-note:nth-child(5) {
-  left: 45%;
-  animation-duration: 6.5s;
-  animation-delay: 0.5s;
-}
-.music-note:nth-child(6) {
-  left: 55%;
-  animation-duration: 5.8s;
-  animation-delay: 1.8s;
-}
-.music-note:nth-child(7) {
-  left: 65%;
-  animation-duration: 6.2s;
-  animation-delay: 0.2s;
-}
-.music-note:nth-child(8) {
-  left: 75%;
-  animation-duration: 7.2s;
-  animation-delay: 1.2s;
-}
-.music-note:nth-child(9) {
-  left: 85%;
-  animation-duration: 5.5s;
-  animation-delay: 0.7s;
-}
-.music-note:nth-child(10) {
-  left: 95%;
-  animation-duration: 6.5s;
-  animation-delay: 0.9s;
-}
+.music-note:nth-child(1) { left: 5%; animation-duration: 6s; animation-delay: 0s; }
+.music-note:nth-child(2) { left: 15%; animation-duration: 5s; animation-delay: 1s; }
+.music-note:nth-child(3) { left: 25%; animation-duration: 7s; animation-delay: 2s; }
+.music-note:nth-child(4) { left: 35%; animation-duration: 5.5s; animation-delay: 1.5s; }
+.music-note:nth-child(5) { left: 45%; animation-duration: 6.5s; animation-delay: 0.5s; }
+.music-note:nth-child(6) { left: 55%; animation-duration: 5.8s; animation-delay: 1.8s; }
+.music-note:nth-child(7) { left: 65%; animation-duration: 6.2s; animation-delay: 0.2s; }
+.music-note:nth-child(8) { left: 75%; animation-duration: 7.2s; animation-delay: 1.2s; }
+.music-note:nth-child(9) { left: 85%; animation-duration: 5.5s; animation-delay: 0.7s; }
+.music-note:nth-child(10) { left: 95%; animation-duration: 6.5s; animation-delay: 0.9s; }
 
-/* --------------------- */
-/* Small Screens Fix */
-/* --------------------- */
+/* Responsive Fix */
 @media (max-width: 768px) {
   .button-container {
     flex-direction: column;
     gap: 10px;
   }
-
   button {
     width: 100%;
   }
+}
+
+/* Responsive Fix for Buttons */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  button {
+    width: 100%;
+  }
+}
+
+/* Global button styles */
+button {
+  width: 150px;
+  height: 60px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Button gradients and hover */
+.generate-button,
+.save-btn,
+.reset-button,
+.copy-button {
+  background: linear-gradient(90deg, #00c6ff, #00ff85);
+  color: black;
+}
+
+.generate-button:hover,
+.save-btn:hover,
+.reset-button:hover,
+.copy-button:hover {
+  background: linear-gradient(135deg, #ff007f, #ff4d4d);
+  color: white;
 }

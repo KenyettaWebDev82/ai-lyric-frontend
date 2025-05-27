@@ -26,7 +26,7 @@ const NavBar = () => {
     }
   };
 
-  // ✅ Hide navbar on Register page
+  // Hide navbar on Register page
   if (location.pathname === "/register") return null;
 
   return (
