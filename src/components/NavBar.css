@@ -94,3 +94,34 @@
     width: 100%;
   }
 }
+.navbar-falling-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.note-navbar {
+  position: absolute;
+  top: -30px;
+  font-size: 30px;
+  animation: navbarFall 2s linear infinite;
+  opacity: 0.7;
+  left: calc(100% * var(--x));
+}
+
+@keyframes navbarFall {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+

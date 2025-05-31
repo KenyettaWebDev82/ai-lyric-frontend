@@ -32,8 +32,8 @@ const Features = () => {
           </li>
 
           <li>
-            <span>📼</span>{" "}
-            <strong className="feature-title">Cassette Loader Animation:</strong>
+            <span>📻</span>{" "}
+            <strong className="feature-title">Boom Box Loader Animation:</strong>
             Feel the retro vibes while Nova spins up your custom track.
           </li>
 

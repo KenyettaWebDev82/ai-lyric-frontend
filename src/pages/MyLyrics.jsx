@@ -63,10 +63,17 @@ function MyLyrics() {
             <div
               className="collapsible-title"
               onClick={() =>
-                setOpenLyricId((prevId) => (prevId === lyric.id ? null : lyric.id))
+                setOpenLyricId((prevId) =>
+                  prevId === lyric.id ? null : lyric.id
+                )
               }
             >
-              {lyric.title} {openLyricId === lyric.id ? "🔽" : "▶️"}
+              {openLyricId === lyric.id ? "🔽" : "▶️"}{" "}
+              <strong>{lyric.title}</strong>{" "}
+              <div className="pill-row">
+                <span className="pill mood-pill">{lyric.mood}</span>
+                <span className="pill genre-pill">{lyric.genre}</span>
+              </div>
             </div>
             {openLyricId === lyric.id && (
               <div className="collapsible-content open">

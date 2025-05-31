@@ -99,3 +99,39 @@
   transform: scale(1.05);
   box-shadow: 0 0 15px #ff4dd2, 0 0 30px #ff007f;
 }
+
+.meta-info {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.pill-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.3px;
+}
+
+.mood-pill {
+  background-color: #ff007f1a; 
+  color: #ff007f;
+  border: 1px solid #ff007f;
+}
+
+.genre-pill {
+  background-color: #00c6ff1a; 
+  color: #00c6ff;
+  border: 1px solid #00c6ff;
+}

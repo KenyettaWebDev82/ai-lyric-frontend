@@ -13,7 +13,7 @@
     display: flex;
     width: 400%;
     height: 100%;
-    animation: trainSlide 11s linear infinite;
+    animation: trainSlide 25s linear infinite;
     z-index: 0;
   }
   

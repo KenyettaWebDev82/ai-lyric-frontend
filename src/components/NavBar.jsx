@@ -14,7 +14,7 @@ const NavBar = () => {
       setUser(firebaseUser);
     });
 
-    return () => unsubscribe(); // cleanup
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = async () => {
@@ -35,46 +35,48 @@ const NavBar = () => {
         <h1 className="navbar-title">🎧 Nova's AI Lyric Generator</h1>
       </div>
 
+      {/* Falling Notes (Only on Home) */}
+      {location.pathname === "/" && (
+        <div className="navbar-falling-notes">
+          {[...Array(12)].map((_, i) => {
+            const icons = ["🎵", "🎶", "🎼", "🎤"]; 
+            const icon = icons[Math.floor(Math.random() * icons.length)];
+            const left = Math.random() * 100;
+            const duration = (2 + Math.random()).toFixed(6);
+            const delay = (Math.random() * 1).toFixed(2);
+
+            return (
+              <span
+                key={i}
+                className="note-navbar"
+                style={{
+                  left: `${left}%`,
+                  animationDuration: `${duration}s`,
+                  animationDelay: `${delay}s`,
+                }}
+              >
+                {icon}
+              </span>
+            );
+          })}
+        </div>
+      )}
+
       <div className="navbar-right">
         <div className="nav-links">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
+          <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             Home
           </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
+          <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             About
           </NavLink>
-          <NavLink
-            to="/features"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
+          <NavLink to="/features" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             Features
           </NavLink>
-          <NavLink
-            to="/mylyrics"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
+          <NavLink to="/mylyrics" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             My Lyrics
           </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
+          <NavLink to="/contact" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
             Contact
           </NavLink>
         </div>
