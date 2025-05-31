@@ -246,7 +246,7 @@ button {
   0% { transform: translateY(-10%); opacity: 1; }
   100% { transform: translateY(100vh); opacity: 0; }
 }
-
+/* 
 .music-note {
   position: fixed;
   top: -10%;
@@ -278,7 +278,7 @@ button {
 .music-note:nth-child(7) { left: 65%; animation-duration: 6.2s; animation-delay: 0.2s; }
 .music-note:nth-child(8) { left: 75%; animation-duration: 7.2s; animation-delay: 1.2s; }
 .music-note:nth-child(9) { left: 85%; animation-duration: 5.5s; animation-delay: 0.7s; }
-.music-note:nth-child(10) { left: 95%; animation-duration: 6.5s; animation-delay: 0.9s; }
+.music-note:nth-child(10) { left: 95%; animation-duration: 6.5s; animation-delay: 0.9s; } */
 
 /* Responsive Fix */
 @media (max-width: 768px) {

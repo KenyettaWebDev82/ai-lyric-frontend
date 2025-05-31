@@ -125,3 +125,36 @@
   }
 }
 
+/* Falling notes container */
+.navbar-falling-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Single falling note */
+.note-navbar {
+  position: absolute;
+  top: -10%;
+  font-size: 30px;
+  opacity: 0.7;
+  animation-name: navbarFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes navbarFall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
